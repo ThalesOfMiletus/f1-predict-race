@@ -10,17 +10,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --bg-color: #0b0d11;
-            --card-bg: rgba(20, 24, 32, 0.75);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --primary-red: #ff1801;
-            --primary-red-glow: rgba(255, 24, 1, 0.35);
-            --text-light: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent-cyan: #00f0ff;
-            --accent-green: #39ff14;
-            --accent-gold: #ffd700;
+:root {
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --border-color: #cbd5e1;
+            --primary-red: #e10600;
+            --primary-red-glow: rgba(225, 6, 0, 0.2);
+            --text-light: #0f172a;
+            --text-muted: #64748b;
+            --accent-cyan: #0284c7;
+            --accent-green: #16a34a;
+            --accent-gold: #d97706;
             --transition-speed: 0.4s;
         }
 
@@ -47,7 +47,7 @@
             letter-spacing: -0.02em;
         }
 
-        /* Background Grid & Glow Effects */
+        /* Background Grid & Glow Effects for Light Theme */
         .bg-grid {
             position: absolute;
             top: 0;
@@ -55,45 +55,44 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(circle at 15% 20%, rgba(255, 24, 1, 0.1) 0%, transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(0, 240, 255, 0.07) 0%, transparent 45%),
-                linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+                radial-gradient(circle at 15% 20%, rgba(225, 6, 0, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(2, 132, 199, 0.05) 0%, transparent 45%),
+                linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 35px 35px, 35px 35px;
             z-index: -1;
         }
 
-        /* Container */
+        /* Container - LARGER CANVAS */
         .presentation-container {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            padding: 15px 25px;
+            padding: 10px 20px;
             position: relative;
         }
 
-        /* Slide Base */
+        /* Slide Base - LARGER CANVAS */
         .slide {
             position: absolute;
-            width: 94%;
-            max-width: 1240px;
-            height: 84%;
-            max-height: 720px;
+            width: 96%;
+            max-width: 1440px;
+            height: 88%;
+            max-height: 820px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 24px;
-            backdrop-filter: blur(16px);
-            padding: 35px 45px;
+            border-radius: 20px;
+            padding: 30px 45px;
             opacity: 0;
-            transform: scale(0.96) translateY(15px);
+            transform: scale(0.97) translateY(12px);
             pointer-events: none;
             transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
         }
 
         .slide.active {
@@ -113,8 +112,8 @@
 
         .cover-badge {
             display: inline-block;
-            background: rgba(255, 24, 1, 0.12);
-            border: 1px solid rgba(255, 24, 1, 0.3);
+            background: rgba(225, 6, 0, 0.08);
+            border: 1px solid rgba(225, 6, 0, 0.25);
             color: var(--primary-red);
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -126,19 +125,19 @@
         }
 
         .cover-title {
-            font-size: 3.6rem;
+            font-size: 3.8rem;
             line-height: 1.1;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #ffffff 40%, var(--primary-red) 100%);
+            background: linear-gradient(135deg, #0f172a 40%, var(--primary-red) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .cover-subtitle {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             color: var(--text-muted);
-            font-weight: 300;
-            max-width: 800px;
+            font-weight: 400;
+            max-width: 850px;
             margin: 0 auto;
         }
 
@@ -148,7 +147,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             width: 100%;
-            max-width: 850px;
+            max-width: 900px;
             border-top: 1px solid var(--border-color);
             padding-top: 25px;
         }
@@ -162,7 +161,7 @@
         }
 
         .meta-item p {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-light);
         }
@@ -178,7 +177,7 @@
         }
 
         .slide-title {
-            font-size: 2.1rem;
+            font-size: 2.2rem;
             color: var(--text-light);
             display: flex;
             align-items: center;
@@ -189,7 +188,7 @@
             content: '';
             display: inline-block;
             width: 6px;
-            height: 30px;
+            height: 32px;
             background-color: var(--primary-red);
             border-radius: 3px;
             box-shadow: 0 0 10px var(--primary-red-glow);
@@ -201,10 +200,10 @@
             letter-spacing: 0.12em;
             color: var(--primary-red);
             font-weight: 700;
-            background: rgba(255, 24, 1, 0.1);
+            background: rgba(225, 6, 0, 0.08);
             padding: 4px 12px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 24, 1, 0.2);
+            border: 1px solid rgba(225, 6, 0, 0.2);
         }
 
         /* Slide Body Layout */
@@ -222,16 +221,16 @@
         }
 
         .slide-content h3 {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             margin-bottom: 10px;
             color: var(--accent-cyan);
         }
 
         .slide-content p {
             color: var(--text-muted);
-            line-height: 1.55;
+            line-height: 1.6;
             margin-bottom: 12px;
-            font-size: 1.02rem;
+            font-size: 1.05rem;
         }
 
         .slide-bullets {
@@ -240,11 +239,11 @@
 
         .slide-bullets li {
             position: relative;
-            padding-left: 26px;
+            padding-left: 28px;
             margin-bottom: 10px;
             color: var(--text-light);
-            font-size: 1.02rem;
-            line-height: 1.5;
+            font-size: 1.05rem;
+            line-height: 1.55;
         }
 
         .slide-bullets li::before {
@@ -257,9 +256,9 @@
 
         /* Visual Cards */
         .visual-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: #f8fafc;
             border: 1px solid var(--border-color);
-            border-radius: 18px;
+            border-radius: 16px;
             padding: 22px;
             height: 100%;
             display: flex;
@@ -274,15 +273,16 @@
         }
 
         .stat-box {
-            background: rgba(255, 255, 255, 0.02);
+            background: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 14px;
             text-align: center;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
         }
 
         .stat-number {
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             color: var(--primary-red);
             font-weight: 800;
         }
@@ -292,6 +292,7 @@
             color: var(--text-muted);
             text-transform: uppercase;
             margin-top: 4px;
+            font-weight: 600;
         }
 
         /* Tables */
@@ -303,150 +304,35 @@
 
         .custom-table th {
             text-align: left;
-            padding: 8px 10px;
+            padding: 9px 12px;
             font-size: 0.78rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .custom-table td {
-            padding: 8px 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        /* Interactive Simulator Styles */
-        .sim-container {
-            display: grid;
-            grid-template-columns: 1fr 1.35fr;
-            gap: 25px;
-            width: 100%;
-            align-items: stretch;
-        }
-
-        .sim-sliders {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 16px;
-        }
-
-        .slider-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .slider-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.88rem;
-        }
-
-        .slider-label {
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        .slider-val {
-            color: var(--accent-cyan);
+            border-bottom: 2px solid var(--border-color);
             font-weight: 700;
         }
 
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 3px;
-            outline: none;
-        }
-
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--primary-red);
-            cursor: pointer;
-            box-shadow: 0 0 10px var(--primary-red);
-            transition: transform 0.1s;
-        }
-
-        input[type=range]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-        }
-
-        .sim-results {
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 14px 18px;
-            max-height: 480px;
-            overflow-y: auto;
-        }
-
-        .sim-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .sim-table th {
-            text-align: left;
-            padding: 6px 8px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            background: rgba(12, 14, 18, 0.9);
-            z-index: 2;
-        }
-
-        .sim-table td {
-            padding: 5px 8px;
-            font-size: 0.84rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.025);
+        .custom-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .rank-badge {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            line-height: 20px;
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
             text-align: center;
             border-radius: 50%;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: bold;
-            background: rgba(255, 255, 255, 0.1);
+            background: #e2e8f0;
+            color: #0f172a;
         }
 
-        .rank-1 { background: var(--primary-red); color: white; box-shadow: 0 0 10px rgba(255, 24, 1, 0.5); }
-        .rank-2 { background: #d7d7d7; color: black; }
-        .rank-3 { background: #ad6f2f; color: white; }
-
-        /* Code box */
-        .code-box {
-            background: rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 14px;
-            font-family: monospace;
-            font-size: 0.82rem;
-            color: #d1d5db;
-            overflow-x: auto;
-            border-left: 3px solid var(--accent-cyan);
-            line-height: 1.45;
-        }
-
-        .code-keyword { color: #f472b6; }
-        .code-function { color: #60a5fa; }
-        .code-comment { color: #6b7280; font-style: italic; }
+        .rank-1 { background: var(--primary-red); color: white; box-shadow: 0 2px 8px rgba(225, 6, 0, 0.3); }
+        .rank-2 { background: #64748b; color: white; }
+        .rank-3 { background: #d97706; color: white; }
 
         /* Slide Footer & Navigation Controls */
         .slide-footer {
@@ -454,10 +340,11 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-color);
-            padding-top: 10px;
+            padding-top: 12px;
             margin-top: 8px;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
+            font-weight: 500;
         }
 
         .nav-bar {
@@ -465,27 +352,29 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            padding: 14px 20px;
-            background: rgba(0,0,0,0.4);
+            padding: 12px 20px;
+            background: #ffffff;
             border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 15px rgba(15, 23, 42, 0.04);
             z-index: 100;
         }
 
         .nav-btn {
-            background: rgba(255, 255, 255, 0.05);
+            background: #f1f5f9;
             border: 1px solid var(--border-color);
             color: var(--text-light);
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.2s;
         }
 
         .nav-btn:hover {
             background: var(--primary-red);
+            color: #ffffff;
             border-color: var(--primary-red);
-            box-shadow: 0 0 15px rgba(255, 24, 1, 0.4);
+            box-shadow: 0 4px 12px rgba(225, 6, 0, 0.3);
         }
 
         .progress-dots {
@@ -494,10 +383,10 @@
         }
 
         .dot {
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: #cbd5e1;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -514,16 +403,10 @@
             right: 20px;
             font-size: 0.78rem;
             color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.02);
+            background: #ffffff;
             border: 1px solid var(--border-color);
             padding: 4px 10px;
             border-radius: 6px;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
         }
     </style>
 </head>
@@ -601,7 +484,7 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 2/10</span>
+                <span>Slide 2/8</span>
             </div>
         </div>
 
@@ -630,7 +513,7 @@
                     </h4>
                     <table class="custom-table" style="font-size: 0.78rem;">
                         <thead>
-                            <tr style="position: sticky; top: 0; background: rgba(12, 14, 18, 0.95); z-index: 5;">
+                            <tr style="position: sticky; top: 0; background: #ffffff; z-index: 5;">
                                 <th>Piloto</th>
                                 <th>grid</th>
                                 <th>pos</th>
@@ -657,7 +540,7 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 3/10</span>
+                <span>Slide 3/8</span>
             </div>
         </div>
 
@@ -674,8 +557,8 @@
                     <p>Com base no diagnóstico da EDA, criaram-se 5 atributos explicativos calculados estritamente com dados históricos prévios:</p>
                     <ul class="slide-bullets" style="font-size: 0.94rem;">
                         <li><strong><code>driver_season_points</code> (Pontos do Ano):</strong> Soma acumulada de pontos do piloto na temporada até a etapa anterior.</li>
-                        <li><strong><code>driver_recent_avg_points</code> (Forma Recente - 7 GPs):</strong> Média de pontos obtidos pelo piloto nas últimas 5 rodadas disputadas.</li>
-                        <li><strong><code>driver_track_avg_points</code> (Histórico na Pista Suavizado):</strong> Média histórica no circuito com Suavização de Laplace para proteger rookies.</li>
+                        <li><strong><code>driver_recent_avg_points</code> (Forma Recente - 5 GPs):</strong> Média de pontos obtidos pelo piloto nas últimas 5 rodadas disputadas.</li>
+                        <li><strong><code>driver_track_avg_points</code> (Histórico na Pista Suavizado):</strong> Média histórica no circuito com Suavização de Laplace ($K=3$) para proteger estreantes.</li>
                         <li><strong><code>constructor_avg_position</code> (Posição Média da Equipe):</strong> Média de chegada dos carros da equipe (escala contínua de 1.0 a 22.0 sem a zona cega de 0 pontos).</li>
                         <li><strong><code>grid</code> (Proxy Média 2026 & Imputação 15.0):</strong> Posição média de largada em 2026 para a prova alvo, isolando punições temporárias de motor.</li>
                     </ul>
@@ -725,7 +608,7 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 4/10</span>
+                <span>Slide 4/8</span>
             </div>
         </div>
 
@@ -748,7 +631,7 @@
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
                                 <span>📍 Histórico na Pista (<code>track_avg</code>)</span>
-                                <span style="color: var(--accent-cyan); font-weight: bold;">-2.1271</span>
+                                <span style="color: var(--accent-cyan); font-weight: bold;">-2.1238</span>
                             </div>
                             <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
                                 <div style="width: 85%; background: var(--accent-cyan); height: 100%; box-shadow: 0 0 8px var(--accent-cyan);"></div>
@@ -758,7 +641,7 @@
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
                                 <span>🏁 Posição de Largada (<code>grid</code>)</span>
-                                <span style="color: var(--primary-red); font-weight: bold;">+1.6277</span>
+                                <span style="color: var(--primary-red); font-weight: bold;">+1.6302</span>
                             </div>
                             <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
                                 <div style="width: 65%; background: var(--primary-red); height: 100%; box-shadow: 0 0 8px var(--primary-red-glow);"></div>
@@ -768,7 +651,7 @@
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
                                 <span>🏎️ Média da Equipe (<code>const_avg_pos</code>)</span>
-                                <span style="color: var(--primary-red); font-weight: bold;">+1.1574</span>
+                                <span style="color: var(--primary-red); font-weight: bold;">+1.1461</span>
                             </div>
                             <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
                                 <div style="width: 48%; background: var(--primary-red); height: 100%;"></div>
@@ -778,7 +661,7 @@
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
                                 <span>📈 Média Recente (<code>recent_avg_5</code>)</span>
-                                <span style="color: var(--accent-gold); font-weight: bold;">+0.5714</span>
+                                <span style="color: var(--accent-gold); font-weight: bold;">+0.5614</span>
                             </div>
                             <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
                                 <div style="width: 25%; background: var(--accent-gold); height: 100%;"></div>
@@ -788,7 +671,7 @@
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
                                 <span>🏆 Pontos do Piloto 2026 (<code>season_pts</code>)</span>
-                                <span style="color: var(--accent-green); font-weight: bold;">-0.0779</span>
+                                <span style="color: var(--accent-green); font-weight: bold;">-0.0736</span>
                             </div>
                             <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
                                 <div style="width: 10%; background: var(--accent-green); height: 100%;"></div>
@@ -811,51 +694,51 @@
                     <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
-                                <span>🏁 Posição de Largada (<code>grid</code>)</span>
-                                <span style="color: var(--accent-green); font-weight: bold;">48.1%</span>
+                                <span>📍 Histórico na Pista (<code>track_avg</code>)</span>
+                                <span style="color: var(--accent-gold); font-weight: bold;">60.1%</span>
                             </div>
                             <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
-                                <div style="width: 48.1%; background: var(--accent-green); height: 100%; box-shadow: 0 0 8px rgba(57, 255, 20, 0.4);"></div>
+                                <div style="width: 60.1%; background: var(--accent-gold); height: 100%; box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>🏁 Posição de Largada (<code>grid</code>)</span>
+                                <span style="color: var(--accent-green); font-weight: bold;">23.7%</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 23.7%; background: var(--accent-green); height: 100%;"></div>
                             </div>
                         </div>
                         
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
                                 <span>🏎️ Média da Equipe (<code>const_avg_pos</code>)</span>
-                                <span style="color: var(--accent-cyan); font-weight: bold;">20.5%</span>
+                                <span style="color: var(--accent-cyan); font-weight: bold;">7.6%</span>
                             </div>
                             <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
-                                <div style="width: 20.5%; background: var(--accent-cyan); height: 100%;"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
-                                <span>📍 Histórico na Pista (<code>track_avg</code>)</span>
-                                <span style="color: var(--accent-gold); font-weight: bold;">17.8%</span>
-                            </div>
-                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
-                                <div style="width: 17.8%; background: var(--accent-gold); height: 100%;"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
-                                <span>🏆 Pontos do Piloto 2026 (<code>season_pts</code>)</span>
-                                <span style="color: var(--text-light); font-weight: bold;">8.1%</span>
-                            </div>
-                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
-                                <div style="width: 8.1%; background: var(--text-light); height: 100%;"></div>
+                                <div style="width: 7.6%; background: var(--accent-cyan); height: 100%;"></div>
                             </div>
                         </div>
                         
                         <div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
                                 <span>📈 Média Recente (<code>recent_avg_5</code>)</span>
-                                <span style="color: var(--text-muted); font-weight: bold;">5.4%</span>
+                                <span style="color: var(--text-muted); font-weight: bold;">4.4%</span>
                             </div>
                             <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
-                                <div style="width: 5.4%; background: var(--text-muted); height: 100%;"></div>
+                                <div style="width: 4.4%; background: var(--text-muted); height: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>🏆 Pontos do Piloto 2026 (<code>season_pts</code>)</span>
+                                <span style="color: var(--text-light); font-weight: bold;">4.1%</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 4.1%; background: var(--text-light); height: 100%;"></div>
                             </div>
                         </div>
                     </div>
@@ -868,64 +751,102 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 5/10</span>
+                <span>Slide 5/8</span>
             </div>
         </div>
 
-        <!-- SLIDE 6: FEATURE ENGINEERING (LAPLACE & GRID PROXY) -->
+        <!-- SLIDE 6: DUAS TABELAS SEPARADAS E SIMPLIFICADAS (RIDGE VS RANDOM FOREST - 22 PILOTOS) -->
         <div class="slide" id="slide-6">
             <div class="slide-header">
-                <h2 class="slide-title">Feature Engineering: Laplace & Grid Proxy</h2>
-                <span class="slide-category">Engenharia de Atributos</span>
+                <h2 class="slide-title">Previsão GP Hungria 2026: Todos os 22 Pilotos</h2>
+                <span class="slide-category">Resultados Comparativos</span>
             </div>
             
-            <div class="slide-body">
-                <div class="slide-content">
-                    <h3>Soluções Aplicadas a Anomalias nos Dados</h3>
-                    <p>Desenvolveram-se duas estratégias de tratamento de atributos para eliminar vieses na corrida a ser prevista:</p>
-                    <ul class="slide-bullets">
-                        <li><strong>Suavização de Laplace (Bayesiana) para Estreantes:</strong> Kimi Antonelli lidera o campeonato de 2026, mas por possuir apenas 1 corrida na Hungria (em 2025, chegando em 10º), seu histórico cru era de 1.0 ponto. 
-                            <br>➔ <em>Solução Adotada:</em> Aplicou-se Laplace com $K=3$ mesclando o histórico da pista com sua média de 2026, elevando seu indicador de **1.0 para 14.0**.
-                        </li>
-                        <li><strong>Grid Médio de 2026 contra Punições:</strong> Norris e Hadjar largaram atrás na Bélgica por punições de troca de motor. O uso desse grid bruto para a Hungria arruinaria a previsão.
-                            <br>➔ <em>Solução Adotada:</em> Utilizou-se a **média de largada em 2026** como proxy da Hungria. Norris subiu para <strong>6.1</strong> e Hadjar para <strong>9.4</strong> de grid estimado.
-                        </li>
-                    </ul>
-                </div>
-                <div class="visual-card" style="justify-content: flex-start; gap: 14px;">
-                    <h4 style="color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Impacto das Modificações nos Dados</h4>
-                    <table class="custom-table" style="font-size: 0.84rem;">
+            <div class="slide-body" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+                <!-- Tabela 1: Regressão Ridge -->
+                <div class="visual-card" style="padding: 14px; max-height: 480px; overflow-y: auto; justify-content: flex-start;">
+                    <h4 style="margin-bottom: 8px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                        <span>1. Regressão Ridge (Modelo Linear)</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: none;">Top 22 Pilotos</span>
+                    </h4>
+                    <table class="custom-table" style="font-size: 0.78rem;">
                         <thead>
-                            <tr>
+                            <tr style="position: sticky; top: 0; background: #ffffff; z-index: 5;">
+                                <th style="width: 10%;">Pos</th>
                                 <th>Piloto</th>
-                                <th>Grid Antigo (Spa)</th>
-                                <th>Grid Médio (Novo)</th>
-                                <th>Track Avg Crua</th>
-                                <th>Track Avg Suavizado</th>
+                                <th>Equipe</th>
+                                <th style="text-align: right; color: var(--accent-cyan);">Predição</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Kimi Antonelli</td>
-                                <td>1.0</td>
-                                <td style="color: var(--accent-green); font-weight: bold;">1.7</td>
-                                <td>1.0 (1 GP)</td>
-                                <td style="color: var(--accent-green); font-weight: bold;">14.0</td>
+
+                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">3.47</td></tr>
+                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">3.51</td></tr>
+                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">5.90</td></tr>
+                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">6.09</td></tr>
+                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">6.65</td></tr>
+                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">6.84</td></tr>
+                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">7.35</td></tr>
+                            <tr><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">10.54</td></tr>
+                            <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.20</td></tr>
+                            <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.29</td></tr>
+                            <tr><td><span class="rank-badge">11</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.98</td></tr>
+                            <tr><td><span class="rank-badge">12</span></td><td style="font-weight: 600;">Franco Colapinto</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">12.58</td></tr>
+                            <tr><td><span class="rank-badge">13</span></td><td style="font-weight: 600;">Gabriel Bortoleto</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">12.87</td></tr>
+                            <tr><td><span class="rank-badge">14</span></td><td style="font-weight: 600;">Carlos Sainz</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.23</td></tr>
+                            <tr><td><span class="rank-badge">15</span></td><td style="font-weight: 600;">Esteban Ocon</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.26</td></tr>
+                            <tr><td><span class="rank-badge">16</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.55</td></tr>
+                            <tr><td><span class="rank-badge">17</span></td><td style="font-weight: 600;">Oliver Bearman</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.59</td></tr>
+                            <tr><td><span class="rank-badge">18</span></td><td style="font-weight: 600;">Fernando Alonso</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">14.67</td></tr>
+                            <tr><td><span class="rank-badge">19</span></td><td style="font-weight: 600;">Alexander Albon</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">14.84</td></tr>
+                            <tr><td><span class="rank-badge">20</span></td><td style="font-weight: 600;">Valtteri Bottas</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">15.29</td></tr>
+                            <tr><td><span class="rank-badge">21</span></td><td style="font-weight: 600;">Sergio Pérez</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">15.54</td></tr>
+                            <tr><td><span class="rank-badge">22</span></td><td style="font-weight: 600;">Lance Stroll</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">16.74</td></tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Tabela 2: Random Forest Regressor -->
+                <div class="visual-card" style="padding: 14px; max-height: 480px; overflow-y: auto; justify-content: flex-start;">
+                    <h4 style="margin-bottom: 8px; color: var(--accent-green); text-transform: uppercase; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                        <span>2. Random Forest Regressor (Árvores)</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: none;">Top 22 Pilotos</span>
+                    </h4>
+                    <table class="custom-table" style="font-size: 0.78rem;">
+                        <thead>
+                            <tr style="position: sticky; top: 0; background: #ffffff; z-index: 5;">
+                                <th style="width: 10%;">Pos</th>
+                                <th>Piloto</th>
+                                <th>Equipe</th>
+                                <th style="text-align: right; color: var(--accent-green);">Predição</th>
                             </tr>
-                            <tr>
-                                <td>Lando Norris</td>
-                                <td>13.0 (Punição)</td>
-                                <td style="color: var(--accent-green); font-weight: bold;">6.1</td>
-                                <td>9.2</td>
-                                <td>9.2</td>
-                            </tr>
-                            <tr>
-                                <td>Isack Hadjar</td>
-                                <td>21.0 (Punição)</td>
-                                <td style="color: var(--accent-green); font-weight: bold;">9.4</td>
-                                <td>0.0 (0 GP)</td>
-                                <td style="color: var(--accent-green); font-weight: bold;">4.5</td>
-                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">3.79</td></tr>
+                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">4.46</td></tr>
+                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">5.63</td></tr>
+                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">6.10</td></tr>
+                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">6.40</td></tr>
+                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">6.69</td></tr>
+                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">7.86</td></tr>
+                            <tr><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">9.57</td></tr>
+                            <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">10.42</td></tr>
+                            <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">10.48</td></tr>
+                            <tr><td><span class="rank-badge">11</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">11.68</td></tr>
+                            <tr><td><span class="rank-badge">12</span></td><td style="font-weight: 600;">Franco Colapinto</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.70</td></tr>
+                            <tr><td><span class="rank-badge">13</span></td><td style="font-weight: 600;">Gabriel Bortoleto</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.74</td></tr>
+                            <tr><td><span class="rank-badge">14</span></td><td style="font-weight: 600;">Oliver Bearman</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.85</td></tr>
+                            <tr><td><span class="rank-badge">15</span></td><td style="font-weight: 600;">Esteban Ocon</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.90</td></tr>
+                            <tr><td><span class="rank-badge">16</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">13.57</td></tr>
+                            <tr><td><span class="rank-badge">17</span></td><td style="font-weight: 600;">Fernando Alonso</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">14.35</td></tr>
+                            <tr><td><span class="rank-badge">18</span></td><td style="font-weight: 600;">Carlos Sainz</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">15.33</td></tr>
+                            <tr><td><span class="rank-badge">19</span></td><td style="font-weight: 600;">Alexander Albon</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">15.57</td></tr>
+                            <tr><td><span class="rank-badge">20</span></td><td style="font-weight: 600;">Valtteri Bottas</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">15.83</td></tr>
+                            <tr><td><span class="rank-badge">21</span></td><td style="font-weight: 600;">Lance Stroll</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">16.00</td></tr>
+                            <tr><td><span class="rank-badge">22</span></td><td style="font-weight: 600;">Sergio Pérez</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">16.19</td></tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -933,186 +854,143 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 6/10</span>
+                <span>Slide 6/8</span>
             </div>
         </div>
 
-        <!-- SLIDE 7: PIPELINE DE DADOS MODULAR -->
+        <!-- SLIDE 7: VALIDAÇÃO DE ACURÁCIA (QUALIFYING REAL VS PREVISÃO RANDOM FOREST) -->
         <div class="slide" id="slide-7">
             <div class="slide-header">
-                <h2 class="slide-title">Pipeline de Dados Modular</h2>
-                <span class="slide-category">Engenharia de Dados</span>
+                <h2 class="slide-title">Validação do Qualifying: Real vs. Random Forest</h2>
+                <span class="slide-category">Acurácia & Validação</span>
+            </div>
+
+            <!-- Métricas de Desempenho do Modelo -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px;">
+                <div class="stat-box" style="padding: 10px; border-color: rgba(0, 240, 255, 0.3);">
+                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-cyan);">1.82</div>
+                    <div class="stat-label" style="font-size: 0.7rem;">Erro Médio (MAE)</div>
+                </div>
+                <div class="stat-box" style="padding: 10px; border-color: rgba(57, 255, 20, 0.3);">
+                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-green);">4 / 22</div>
+                    <div class="stat-label" style="font-size: 0.7rem;">Cravadas Exatas (18.2%)</div>
+                </div>
+                <div class="stat-box" style="padding: 10px; border-color: rgba(255, 215, 0, 0.3);">
+                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-gold);">50.0%</div>
+                    <div class="stat-label" style="font-size: 0.7rem;">Margem de ±1 Posição</div>
+                </div>
+                <div class="stat-box" style="padding: 10px;">
+                    <div class="stat-number" style="font-size: 1.5rem; color: var(--text-light);">68.2%</div>
+                    <div class="stat-label" style="font-size: 0.7rem;">Margem de ±2 Posições</div>
+                </div>
             </div>
             
-            <div class="slide-body">
-                <div class="slide-content">
-                    <h3>Estrutura da Pipeline em Python</h3>
-                    <p>Encapsulou-se todo o fluxo de tratamento na função <code>prepare_f1_pipeline</code>, garantindo modularidade e reprodutibilidade:</p>
-                    <ul class="slide-bullets">
-                        <li><strong>Janela Temporal Retroativa:</strong> Filtraram-se os dados a partir da era turbo-híbrida (2014-2026). O cálculo de atributos varre cada corrida de forma retroativa, garantindo zero vazamento de dados futuros.</li>
-                        <li><strong>Normalização com StandardScaler:</strong> Padronizaram-se as variáveis numéricas derivadas para que atributos em escalas de centenas (pontos) não distorcessem os coeficientes lineares.</li>
-                        <li><strong>Saída Estruturada:</strong> A pipeline entrega diretamente os conjuntos `X_train`, `y_train` e `X_pred` higienizados.</li>
-                    </ul>
+            <div class="slide-body" style="grid-template-columns: 1fr 1.15fr; gap: 18px;">
+                <!-- Tabela 1: Qualifying REAL (Oficial) -->
+                <div class="visual-card" style="padding: 12px; max-height: 400px; overflow-y: auto; justify-content: flex-start;">
+                    <h4 style="margin-bottom: 6px; color: var(--accent-gold); text-transform: uppercase; font-size: 0.84rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 4px;">
+                        <span>1. Qualifying REAL (Oficial Hungria)</span>
+                        <span style="font-size: 0.68rem; color: var(--text-muted); text-transform: none;">Oficial (Top 22)</span>
+                    </h4>
+                    <table class="custom-table" style="font-size: 0.76rem;">
+                        <thead>
+                            <tr style="position: sticky; top: 0; background: #ffffff; z-index: 5;">
+                                <th style="width: 12%;">Pos</th>
+                                <th>Piloto</th>
+                                <th>Equipe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td></tr>
+                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td></tr>
+                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td></tr>
+                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td></tr>
+                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td></tr>
+                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td></tr>
+                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td></tr>
+                            <tr><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td></tr>
+                            <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td></tr>
+                            <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td></tr>
+                            <tr><td><span class="rank-badge">11</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td></tr>
+                            <tr><td><span class="rank-badge">12</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td></tr>
+                            <tr><td><span class="rank-badge">13</span></td><td style="font-weight: 600;">Franco Colapinto</td><td style="color: var(--text-muted);">Alpine F1 Team</td></tr>
+                            <tr><td><span class="rank-badge">14</span></td><td style="font-weight: 600;">Gabriel Bortoleto</td><td style="color: var(--text-muted);">Audi</td></tr>
+                            <tr><td><span class="rank-badge">15</span></td><td style="font-weight: 600;">Esteban Ocon</td><td style="color: var(--text-muted);">Haas F1 Team</td></tr>
+                            <tr><td><span class="rank-badge">16</span></td><td style="font-weight: 600;">Fernando Alonso</td><td style="color: var(--text-muted);">Aston Martin</td></tr>
+                            <tr><td><span class="rank-badge">17</span></td><td style="font-weight: 600;">Oliver Bearman</td><td style="color: var(--text-muted);">Haas F1 Team</td></tr>
+                            <tr><td><span class="rank-badge">18</span></td><td style="font-weight: 600;">Carlos Sainz</td><td style="color: var(--text-muted);">Williams</td></tr>
+                            <tr><td><span class="rank-badge">19</span></td><td style="font-weight: 600;">Alexander Albon</td><td style="color: var(--text-muted);">Williams</td></tr>
+                            <tr><td><span class="rank-badge">20</span></td><td style="font-weight: 600;">Lance Stroll</td><td style="color: var(--text-muted);">Aston Martin</td></tr>
+                            <tr><td><span class="rank-badge">21</span></td><td style="font-weight: 600;">Valtteri Bottas</td><td style="color: var(--text-muted);">Cadillac</td></tr>
+                            <tr><td><span class="rank-badge">22</span></td><td style="font-weight: 600;">Sergio Pérez</td><td style="color: var(--text-muted);">Cadillac</td></tr>
+
+                        </tbody>
+                    </table>
                 </div>
-                <div class="visual-card">
-                    <h4 style="margin-bottom: 10px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Assinatura do Código da Pipeline</h4>
-                    <div class="code-box">
-def <span class="code-function">prepare_f1_pipeline</span>(races, results, drivers, constructors, target_race_id, k=3):
-    <span class="code-comment"># 1. Filtra era turbo-híbrida (>= 2014)</span>
-    <span class="code-comment"># 2. Obtém média de largada de 2026 para a corrida alvo</span>
-    <span class="code-comment"># 3. Varre corridas calculando features retroativas</span>
-    <span class="code-comment"># 4. Posição média do construtor na temporada</span>
-    <span class="code-comment"># 5. Retorna conjuntos X_train, y_train e X_pred</span>
-    return X_train, y_train, X_pred, meta_pred
-                    </div>
+
+                <!-- Tabela 2: Previsão Random Forest + Acurácia -->
+                <div class="visual-card" style="padding: 12px; max-height: 400px; overflow-y: auto; justify-content: flex-start;">
+                    <h4 style="margin-bottom: 6px; color: var(--accent-green); text-transform: uppercase; font-size: 0.84rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 4px;">
+                        <span>2. Previsão Random Forest (ML)</span>
+                        <span style="font-size: 0.68rem; color: var(--text-muted); text-transform: none;">Comparativo com Real</span>
+                    </h4>
+                    <table class="custom-table" style="font-size: 0.76rem;">
+                        <thead>
+                            <tr style="position: sticky; top: 0; background: #ffffff; z-index: 5;">
+                                <th style="width: 10%;">Pred</th>
+                                <th>Piloto</th>
+                                <th>Equipe</th>
+                                <th style="text-align: right; color: var(--accent-green);">Acurácia / Dif.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-gold); font-weight: bold;">Real: 4º (Diff -3)</td></tr>
+                            <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 2º!</td></tr>
+                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 5º (Diff -2)</td></tr>
+                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 3º (Diff +1)</td></tr>
+                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 1º (Diff +4)</td></tr>
+                            <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 6º!</td></tr>
+                            <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 7º!</td></tr>
+                            <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 8º!</td></tr>
+                            <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 12º (Diff -3)</td></tr>
+                            <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 11º (Diff -1)</td></tr>
+                            <tr><td><span class="rank-badge">11</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 10º (Diff +1)</td></tr>
+                            <tr><td><span class="rank-badge">12</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 9º (Diff +3)</td></tr>
+                            <tr><td><span class="rank-badge">13</span></td><td style="font-weight: 600;">Gabriel Bortoleto</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 14º (Diff -1)</td></tr>
+                            <tr><td><span class="rank-badge">14</span></td><td style="font-weight: 600;">Esteban Ocon</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 15º (Diff -1)</td></tr>
+                            <tr><td><span class="rank-badge">15</span></td><td style="font-weight: 600;">Carlos Sainz</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 18º (Diff -3)</td></tr>
+                            <tr><td><span class="rank-badge">16</span></td><td style="font-weight: 600;">Oliver Bearman</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 17º (Diff -1)</td></tr>
+                            <tr><td><span class="rank-badge">17</span></td><td style="font-weight: 600;">Franco Colapinto</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 13º (Diff +4)</td></tr>
+                            <tr><td><span class="rank-badge">18</span></td><td style="font-weight: 600;">Alexander Albon</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 19º (Diff -1)</td></tr>
+                            <tr><td><span class="rank-badge">19</span></td><td style="font-weight: 600;">Valtteri Bottas</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 21º (Diff -2)</td></tr>
+                            <tr><td><span class="rank-badge">20</span></td><td style="font-weight: 600;">Sergio Pérez</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 22º (Diff -2)</td></tr>
+                            <tr><td><span class="rank-badge">21</span></td><td style="font-weight: 600;">Fernando Alonso</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 16º (Diff +5)</td></tr>
+                            <tr><td><span class="rank-badge">22</span></td><td style="font-weight: 600;">Lance Stroll</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 20º (Diff +2)</td></tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 7/10</span>
+                <span>Slide 7/8</span>
             </div>
         </div>
 
-        <!-- SLIDE 8: MODELOS DE PREVISÃO -->
-        <div class="slide" id="slide-8">
-            <div class="slide-header">
-                <h2 class="slide-title">Modelos Preditivos Utilizados</h2>
-                <span class="slide-category">Modelagem</span>
+        <!-- SLIDE 8: AGRADECIMENTO & ENCERRAMENTO -->
+        <div class="slide cover-slide" id="slide-8">
+            <div>
+                <span class="cover-badge" style="background: rgba(225, 6, 0, 0.08); border-color: rgba(225, 6, 0, 0.25);">Fim da Apresentação</span>
+                <h1 class="cover-title" style="font-size: 4.2rem; margin-top: 10px;">Muito Obrigado!</h1>
+                <p class="cover-subtitle" style="font-size: 1.5rem; color: var(--accent-cyan); font-weight: 600; margin-top: 10px;">
+                    Estamos abertos a perguntas e considerações.
+                </p>
             </div>
             
-            <div class="slide-body">
-                <div class="slide-content">
-                    <h3>Comparação entre Ridge e Random Forest</h3>
-                    <p>Treinaram-se e compararam-se dois modelos preditivos com características distintas para a previsão da corrida:</p>
-                    <ul class="slide-bullets">
-                        <li><strong>Regressão Ridge (Linear Regularizado):</strong> Escolheu-se este modelo por sua transparência, permitindo expor os coeficientes exatos (pesos) de cada atributo escalonado.</li>
-                        <li><strong>Random Forest Regressor (Ensemble de Árvores):</strong> Escolheu-se este modelo por sua capacidade não-linear de capturar interações complexas e lidar com dispersões de corrida.</li>
-                    </ul>
-                </div>
-                <div class="visual-card">
-                    <h4 style="margin-bottom: 12px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Coeficientes (Pesos Explícitos) Aprendidos no Ridge</h4>
-                    <ul style="color: var(--text-light); font-size: 0.9rem; list-style-type: none; display: flex; flex-direction: column; gap: 8px;">
-                        <li>🏁 <strong>Grid de Largada:</strong> <span style="color: var(--primary-red); font-weight: bold;">+1.6277</span> (Aumenta a posição = piora)</li>
-                        <li>📍 <strong>Histórico na Pista:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-2.1271</span> (Reduz a posição = melhora)</li>
-                        <li>🏎️ <strong>Posição Média da Equipe:</strong> <span style="color: var(--primary-red); font-weight: bold;">+1.1574</span> (Desempenho da equipe 1-22)</li>
-                        <li>🏆 <strong>Pontos do Piloto 2026:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-0.0779</span> (Regularidade no ano)</li>
-                        <li>📈 <strong>Média Recente (7 GPs):</strong> <span style="color: var(--text-muted); font-weight: bold;">+0.5714</span> (Forma de curto/médio prazo)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 8/10</span>
-            </div>
-        </div>
 
-        <!-- SLIDE 9: INTERACTIVE SIMULATOR (TOP 12 DIPLOMÁTICO) -->
-        <div class="slide" id="slide-9">
-            <div class="slide-header">
-                <h2 class="slide-title">Previsão GP Hungria 2026 & Simulador (Top 12)</h2>
-                <span class="slide-category">Resultados</span>
-            </div>
-            
-            <div class="slide-body full-width">
-                <div class="sim-container">
-                    <div class="sim-sliders">
-                        <h4 style="text-transform: uppercase; color: var(--primary-red); margin-bottom: 4px; font-size: 1.05rem;">Simulador de Pesos</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
-                            Altere os sliders para ajustar em tempo real o peso de cada variável e recalcular o ranking previsto dos 12 primeiros pilotos.
-                        </p>
-                        
-                        <div class="slider-group">
-                            <div class="slider-header">
-                                <span class="slider-label">Peso da Posição de Largada (Grid)</span>
-                                <span class="slider-val" id="val-grid">50%</span>
-                            </div>
-                            <input type="range" id="slide-grid" min="0" max="100" value="50" oninput="updateSimulation()">
-                        </div>
-                        
-                        <div class="slider-group">
-                            <div class="slider-header">
-                                <span class="slider-label">Peso da Temporada Atual (Pontos)</span>
-                                <span class="slider-val" id="val-season">30%</span>
-                            </div>
-                            <input type="range" id="slide-season" min="0" max="100" value="30" oninput="updateSimulation()">
-                        </div>
-                        
-                        <div class="slider-group">
-                            <div class="slider-header">
-                                <span class="slider-label">Peso do Histórico da Pista (Suavizado)</span>
-                                <span class="slider-val" id="val-track">20%</span>
-                            </div>
-                            <input type="range" id="slide-track" min="0" max="100" value="20" oninput="updateSimulation()">
-                        </div>
-                        
-                        <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px; line-height: 1.3;">
-                            *Fórmula: <code>Score = (W_grid * NormGrid + W_season * NormSeason + W_track * NormTrack)</code>.
-                        </div>
-                    </div>
-                    
-                    <div class="sim-results">
-                        <h4 style="text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.05rem; display: flex; justify-content: space-between;">
-                            <span>Classificação Prevista GP Hungria (Top 12)</span>
-                        </h4>
-                        
-                        <table class="sim-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 10%">Pos</th>
-                                    <th style="width: 45%">Piloto</th>
-                                    <th style="width: 30%">Equipe</th>
-                                    <th style="width: 15%; text-align: right;">Score</th>
-                                </tr>
-                            </thead>
-                            <tbody id="sim-tbody">
-                                <!-- Populated dynamically by JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 9/10</span>
-            </div>
-        </div>
-
-        <!-- SLIDE 10: CONCLUSÃO & ENCERRAMENTO -->
-        <div class="slide" id="slide-10">
-            <div class="slide-header">
-                <h2 class="slide-title">Conclusões Finais</h2>
-                <span class="slide-category">Encerramento</span>
-            </div>
-            
-            <div class="slide-body">
-                <div class="slide-content">
-                    <h3>Principais Entregas e Aprendizados</h3>
-                    <p>Ao concluir este projeto de Ciência de Dados aplicado à Fórmula 1, destacam-se as seguintes contribuições técnicas alcançadas:</p>
-                    <ul class="slide-bullets">
-                        <li><strong>Sucesso na Engenharia de Atributos:</strong> Eliminou-se distorções críticas com o Grid Médio de 2026 e a Suavização de Laplace, garantindo que o líder Kimi Antonelli e pilotos punidos como Norris e Hadjar tivessem previsões justas.</li>
-                        <li><strong>Convergência e Explicabilidade:</strong> A combinação do Ridge com o Random Forest permitiu comprovar que a largada e a aptidão na pista são os fatores dominantes no Hungaroring.</li>
-                        <li><strong>Favoritismo Validado:</strong> As previsões convergem apontando Andrea Kimi Antonelli (Mercedes) e Lewis Hamilton (Ferrari) como os grandes postulantes à vitória.</li>
-                    </ul>
-                </div>
-                <div class="visual-card" style="text-align: center; gap: 14px;">
-                    <h3 style="color: var(--primary-red); font-size: 2rem;">Muito Obrigado!</h3>
-                    <p style="color: var(--text-light); font-size: 1.15rem; font-weight: 600;">Aberto a perguntas e considerações.</p>
-                    <div style="border-top: 1px solid var(--border-color); padding-top: 14px; margin-top: 8px; font-size: 0.88rem; color: var(--text-muted);">
-                        <p><strong>Projeto de Pós-Graduação: Previsão de F1</strong></p>
-                        <p>Autores: <strong>Thales Cogo & Lázaro Vissoto</strong></p>
-                        <p>Orientador: <strong>Prof. Marcelo Diaz</strong></p>
-                        <p style="margin-top: 4px; font-weight: bold; color: var(--accent-cyan);">Pós-Graduação CDIA - CD005</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 10/10</span>
-            </div>
         </div>
 
     </div>
@@ -1130,8 +1008,6 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
             <span class="dot" onclick="goToSlide(6)"></span>
             <span class="dot" onclick="goToSlide(7)"></span>
             <span class="dot" onclick="goToSlide(8)"></span>
-            <span class="dot" onclick="goToSlide(9)"></span>
-            <span class="dot" onclick="goToSlide(10)"></span>
         </div>
         
         <button class="nav-btn" onclick="nextSlide()">Próximo ▶</button>
@@ -1142,7 +1018,7 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
     <script>
         // Slide Navigation Logic
         let currentSlide = 1;
-        const totalSlides = 10;
+        const totalSlides = 8;
 
         function showSlide(index) {
             if (index < 1 || index > totalSlides) return;
@@ -1179,72 +1055,6 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
                 prevSlide();
             }
         });
-
-        // F1 Prediction Simulator Data (Top 12 Drivers)
-        const driversData = [
-            { id: 863, name: "Andrea Kimi Antonelli", team: "Mercedes", points: 183, grid: 1.7, track: 14.0 },
-            { id: 1, name: "Lewis Hamilton", team: "Ferrari", points: 139, grid: 4.3, track: 16.1 },
-            { id: 847, name: "George Russell", team: "Mercedes", points: 128, grid: 2.6, track: 8.5 },
-            { id: 857, name: "Oscar Piastri", team: "McLaren", points: 75, grid: 5.9, track: 12.6 },
-            { id: 846, name: "Lando Norris", team: "McLaren", points: 77, grid: 6.1, track: 9.2 },
-            { id: 844, name: "Charles Leclerc", team: "Ferrari", points: 109, grid: 4.5, track: 7.5 },
-            { id: 830, name: "Max Verstappen", team: "Red Bull", points: 82, grid: 6.8, track: 11.3 },
-            { id: 865, name: "Isack Hadjar", team: "Red Bull", points: 60, grid: 9.4, track: 4.5 },
-            { id: 842, name: "Pierre Gasly", team: "Alpine F1 Team", points: 41, grid: 11.0, track: 3.6 },
-            { id: 859, name: "Liam Lawson", team: "RB F1 Team", points: 34, grid: 10.5, track: 3.5 },
-            { id: 866, name: "Arvid Lindblad", team: "RB F1 Team", points: 20, grid: 11.1, track: 2.0 },
-            { id: 861, name: "Franco Colapinto", team: "Alpine F1 Team", points: 20, grid: 13.4, track: 1.5 }
-        ];
-
-        function updateSimulation() {
-            const wGrid = parseFloat(document.getElementById('slide-grid').value);
-            const wSeason = parseFloat(document.getElementById('slide-season').value);
-            const wTrack = parseFloat(document.getElementById('slide-track').value);
-            
-            const total = wGrid + wSeason + wTrack;
-            const pctGrid = total > 0 ? Math.round((wGrid / total) * 100) : 0;
-            const pctSeason = total > 0 ? Math.round((wSeason / total) * 100) : 0;
-            const pctTrack = total > 0 ? 100 - pctGrid - pctSeason : 0;
-            
-            document.getElementById('val-grid').innerText = pctGrid + "%";
-            document.getElementById('val-season').innerText = pctSeason + "%";
-            document.getElementById('val-track').innerText = pctTrack + "%";
-            
-            const simulatedResults = driversData.map(driver => {
-                // Normalize attributes (0 to 1)
-                const normGrid = (22 - driver.grid) / 22;
-                const normSeason = driver.points / 200;
-                const normTrack = driver.track / 25;
-                
-                const weightedScore = (wGrid * normGrid + wSeason * normSeason + wTrack * normTrack);
-                
-                return {
-                    name: driver.name,
-                    team: driver.team,
-                    score: weightedScore
-                };
-            });
-            
-            simulatedResults.sort((a, b) => b.score - a.score);
-            
-            const tbody = document.getElementById('sim-tbody');
-            tbody.innerHTML = '';
-            
-            simulatedResults.forEach((row, i) => {
-                const rankClass = i === 0 ? 'rank-1' : (i === 1 ? 'rank-2' : (i === 2 ? 'rank-3' : ''));
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><span class="rank-badge ${rankClass}">${i + 1}</span></td>
-                    <td style="font-weight: 600;">${row.name}</td>
-                    <td style="color: var(--text-muted); font-size: 0.8rem;">${row.team}</td>
-                    <td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">${(row.score / 100).toFixed(3)}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        // Initialize simulation on load
-        updateSimulation();
     </script>
 </body>
 </html>
