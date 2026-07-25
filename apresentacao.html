@@ -536,10 +536,10 @@
         <!-- SLIDE 1: COVER -->
         <div class="slide cover-slide active" id="slide-1">
             <div>
-                <span class="cover-badge">Apresentação de Projeto</span>
-                <h1 class="cover-title">Análise Exploratória & Previsão Preditiva na Fórmula 1</h1>
+                <span class="cover-badge">Antonio Meneghetti Faculdade</span>
+                <h1 class="cover-title">Análise Exploratória na Fórmula 1</h1>
                 <p class="cover-subtitle">
-                    Desafio de Engenharia de Dados & Machine Learning: Previsão do GP da Hungria de 2026
+                    Previsão do GP da Hungria de 2026
                 </p>
             </div>
             
@@ -559,7 +559,7 @@
             </div>
         </div>
 
-        <!-- SLIDE 2: INTRODUÇÃO & DESAFIO (TERCEIRA PESSOA) -->
+        <!-- SLIDE 2: INTRODUÇÃO & DESAFIO -->
         <div class="slide" id="slide-2">
             <div class="slide-header">
                 <h2 class="slide-title">Introdução & O Desafio Preditivo</h2>
@@ -571,9 +571,9 @@
                     <h3>Objetivo do Trabalho</h3>
                     <p>Este trabalho foi desenvolvido com o objetivo de construir uma solução completa de ciência de dados capaz de prever a classificação de chegada de uma corrida de F1 a partir de dados históricos reais:</p>
                     <ul class="slide-bullets">
-                        <li><strong>Escolha da Corrida Alvo: GP da Hungria de 2026 (Hungaroring):</strong> Circuito travado de baixa velocidade, conhecido como "Mônaco sem muros", onde ultrapassagens são raras e o grid de largada possui enorme peso preditivo.</li>
-                        <li><strong>Prevenção Rigorosa de Leakage:</strong> Garantia de que todos os atributos agregados (pontos do ano, médias recentes e histórico de pista) fossem calculados estritamente com dados anteriores à corrida alvo.</li>
-                        <li><strong>Objetivo Científico:</strong> Estruturação de uma pipeline reprodutível e comparação do comportamento de modelos lineares (Ridge) e não-lineares (Random Forest).</li>
+                        <li><strong>Corrida Alvo: GP da Hungria de 2026 (Hungaroring):</strong> Circuito travado de baixa velocidade, conhecido como "Mônaco sem muros", onde ultrapassagens são raras e o grid de largada possui enorme peso preditivo.</li>
+                        <li><strong>Prevenção de Vazamento de Dados:</strong> Garantia de que todos os atributos agregados (pontos do ano, médias recentes e histórico de pista) fossem calculados estritamente com dados anteriores à corrida alvo.</li>
+                        <li><strong>Objetivo Científico:</strong> Estruturação de uma pipeline reprodutível e comparação do comportamento de modelo linear (Ridge) e não-linear (Random Forest).</li>
                     </ul>
                 </div>
                 <div class="visual-card">
@@ -601,11 +601,11 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 2/9</span>
+                <span>Slide 2/10</span>
             </div>
         </div>
 
-        <!-- SLIDE 3: EDA (DIAGNÓSTICO E TRATAMENTO) (TERCEIRA PESSOA) -->
+        <!-- SLIDE 3: EDA (DIAGNÓSTICO E TRATAMENTO) -->
         <div class="slide" id="slide-3">
             <div class="slide-header">
                 <h2 class="slide-title">Exploração de Dados (EDA): Diagnóstico</h2>
@@ -614,11 +614,13 @@
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>Identificação de Gargalos e Definição do Target</h3>
-                    <p>Durante a análise estatística inicial do dataset de F1, diagnosticaram-se peculiaridades estruturais decisivas para a modelagem:</p>
+                    <h3>Diagnóstico e Tratamento do Dataset</h3>
+                    <p>Na etapa de exploração de dados, diagnosticaram-se 4 aspectos fundamentais para higienização e tratamento do dataset:</p>
                     <ul class="slide-bullets">
-                        <li><strong>Tratamento de Abandonos (DNFs):</strong> Identificou-se que a coluna tradicional <code>position</code> continha muitos nulos (<code>\N</code>) em casos de abandono. Por essa razão, adotou-se a coluna <code>positionOrder</code> como variável alvo (*target*), por ser estritamente numérica e atribuir ordenamento aos abandonos pelas voltas completadas.</li>
-                        <li><strong>Dominância Técnica em 2026:</strong> Observou-se uma disparidade marcante entre os construtores em 2026, com a Mercedes vencendo 8 das 10 primeiras provas. Isso indicou a necessidade de incluir a força da equipe no modelo.</li>
+                        <li><strong>Tratamento de Abandonos (DNFs):</strong> A coluna `position` possui nulos (`\N`) em abandonos. Adotou-se `positionOrder` como variável alvo (*target*), por ser estritamente numérica e classificar os abandonos por voltas.</li>
+                        <li><strong>Imputação de Nulos no Grid:</strong> Registros com `grid` zerado ou ausente foram imputados com a posição `15.0`.</li>
+                        <li><strong>Prevenção de Vazamento de Dados:</strong> Usamos o dataset localmente, garantindo que todos os atributos agregados (pontos do ano, médias recentes e histórico de pista) fossem calculados estritamente com dados anteriores à corrida alvo.</li>
+                        <li><strong>Força das Equipes em 2026:</strong> Calculada pela posição média de chegada da equipe (`constructor_avg_position`), uma variável contínua (1 a 22) que elimina o truncamento de zero pontos para equipes de meio e fundo de grid.</li>
                     </ul>
                 </div>
                 <div class="visual-card" style="padding: 14px; max-height: 480px; overflow-y: auto;">
@@ -655,63 +657,66 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 3/9</span>
+                <span>Slide 3/10</span>
             </div>
         </div>
 
-        <!-- SLIDE 4: MATRIZ DE CORRELAÇÃO (TERCEIRA PESSOA) -->
+        <!-- SLIDE 4: ATRIBUTOS CRIADOS NO FEATURE ENGINEERING -->
         <div class="slide" id="slide-4">
             <div class="slide-header">
-                <h2 class="slide-title">A Matriz de Correlação Linear</h2>
-                <span class="slide-category">Estatística</span>
+                <h2 class="slide-title">Feature Engineering: Atributos Criados</h2>
+                <span class="slide-category">Engenharia de Atributos</span>
             </div>
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>Análise de Dependência das Variáveis</h3>
-                    <p>Foi calculada a matriz de correlação linear para medir o grau de associação entre as variáveis explicativas e a posição final de chegada (<code>positionOrder</code>):</p>
-                    <ul class="slide-bullets">
-                        <li><strong>Grid de Largada (<code>grid</code>): <span style="color: var(--accent-green);">+0.6132 (em 2026)</span></strong>
-                            <br>Demonstrou-se estatisticamente que quanto maior a posição de largada (fundo do grid), maior será o número da posição de chegada (pior o resultado). É o preditor isolado mais forte.
-                        </li>
-                        <li><strong>Pontos do Piloto no Ano (<code>driver_season_points</code>): <span style="color: var(--accent-cyan);">-0.5401</span></strong>
-                            <br>A correlação negativa indica que pilotos com maior pontuação acumulada tendem a chegar em posições menores (mais perto do 1º lugar).
-                        </li>
-                        <li><strong>Pontos do Construtor (<code>constructor_season_points</code>): <span style="color: var(--text-muted);">-0.3814</span></strong>
-                            <br>Reflete a influência do equipamento na colocação média da dupla de pilotos.
-                        </li>
+                    <h3>Visão Geral das Features Derivadas</h3>
+                    <p>Com base no diagnóstico da EDA, criaram-se 5 atributos explicativos calculados estritamente com dados históricos prévios:</p>
+                    <ul class="slide-bullets" style="font-size: 0.94rem;">
+                        <li><strong><code>driver_season_points</code> (Pontos do Ano):</strong> Soma acumulada de pontos do piloto na temporada até a etapa anterior.</li>
+                        <li><strong><code>driver_recent_avg_points</code> (Forma Recente - 7 GPs):</strong> Média de pontos obtidos pelo piloto nas últimas 5 rodadas disputadas.</li>
+                        <li><strong><code>driver_track_avg_points</code> (Histórico na Pista Suavizado):</strong> Média histórica no circuito com Suavização de Laplace para proteger rookies.</li>
+                        <li><strong><code>constructor_avg_position</code> (Posição Média da Equipe):</strong> Média de chegada dos carros da equipe (escala contínua de 1.0 a 22.0 sem a zona cega de 0 pontos).</li>
+                        <li><strong><code>grid</code> (Proxy Média 2026 & Imputação 15.0):</strong> Posição média de largada em 2026 para a prova alvo, isolando punições temporárias de motor.</li>
                     </ul>
                 </div>
-                <div class="visual-card">
-                    <h4 style="margin-bottom: 12px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Tabela de Correlação com o Target (positionOrder)</h4>
-                    <table class="custom-table">
+                <div class="visual-card" style="padding: 18px; justify-content: flex-start; gap: 12px;">
+                    <h4 style="color: var(--accent-cyan); text-transform: uppercase; font-size: 0.92rem; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                        Resumo dos Atributos de Entrada no Pipeline
+                    </h4>
+                    <table class="custom-table" style="font-size: 0.82rem;">
                         <thead>
                             <tr>
-                                <th>Variável Explicativa</th>
-                                <th>Escala</th>
-                                <th style="text-align: right;">Correlação</th>
+                                <th>Atributo</th>
+                                <th>Escala / Unidade</th>
+                                <th>Objetivo Preditivo</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>grid</code> (Largada em 2026)</td>
-                                <td>1 a 22</td>
-                                <td style="text-align: right; color: var(--accent-green); font-weight: bold;">+0.6132</td>
+                                <td><code>grid</code></td>
+                                <td>Numérico (1-22)</td>
+                                <td>Vantagem de largada</td>
                             </tr>
                             <tr>
                                 <td><code>driver_season_points</code></td>
-                                <td>Pontos 2026</td>
-                                <td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">-0.5401</td>
-                            </tr>
-                            <tr>
-                                <td><code>constructor_season_points</code></td>
-                                <td>Pontos Equipe</td>
-                                <td style="text-align: right; color: var(--text-muted); font-weight: bold;">-0.3814</td>
+                                <td>Pontos Acumulados</td>
+                                <td>Competitividade no ano</td>
                             </tr>
                             <tr>
                                 <td><code>driver_recent_avg_points</code></td>
-                                <td>Média 7 GPs</td>
-                                <td style="text-align: right; color: var(--accent-muted); font-weight: bold;">-0.1777</td>
+                                <td>Média 5 GPs</td>
+                                <td>Forma física recente</td>
+                            </tr>
+                            <tr>
+                                <td><code>driver_track_avg_points</code></td>
+                                <td>Média Suavizada ($K=3$)</td>
+                                <td>Aptidão ao Hungaroring</td>
+                            </tr>
+                            <tr>
+                                <td><code>constructor_avg_position</code></td>
+                                <td>Média Equipe (1-22)</td>
+                                <td>Desempenho do carro</td>
                             </tr>
                         </tbody>
                     </table>
@@ -720,12 +725,155 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 4/9</span>
+                <span>Slide 4/10</span>
             </div>
         </div>
 
-        <!-- SLIDE 5: FEATURE ENGINEERING (LAPLACE & GRID PROXY) (TERCEIRA PESSOA) -->
+        <!-- SLIDE 5: PESOS E IMPORTÂNCIAS DOS MODELOS (RIDGE VS RANDOM FOREST) -->
         <div class="slide" id="slide-5">
+            <div class="slide-header">
+                <h2 class="slide-title">Pesos & Importâncias dos Modelos</h2>
+                <span class="slide-category">Estatística & Modelagem</span>
+            </div>
+            
+            <div class="slide-body" style="grid-template-columns: 1fr 1fr; gap: 25px;">
+                <!-- Gráfico Modelo 1: Regressão Ridge -->
+                <div class="visual-card" style="justify-content: flex-start; gap: 12px; padding: 18px;">
+                    <h4 style="color: var(--accent-cyan); text-transform: uppercase; font-size: 0.92rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                        <span>1. Coeficientes do Modelo Ridge</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: none;">Pesos Padronizados</span>
+                    </h4>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>📍 Histórico na Pista (<code>track_avg</code>)</span>
+                                <span style="color: var(--accent-cyan); font-weight: bold;">-2.1271</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 85%; background: var(--accent-cyan); height: 100%; box-shadow: 0 0 8px var(--accent-cyan);"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>🏁 Posição de Largada (<code>grid</code>)</span>
+                                <span style="color: var(--primary-red); font-weight: bold;">+1.6277</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 65%; background: var(--primary-red); height: 100%; box-shadow: 0 0 8px var(--primary-red-glow);"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>🏎️ Média da Equipe (<code>const_avg_pos</code>)</span>
+                                <span style="color: var(--primary-red); font-weight: bold;">+1.1574</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 48%; background: var(--primary-red); height: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>📈 Média Recente (<code>recent_avg_5</code>)</span>
+                                <span style="color: var(--accent-gold); font-weight: bold;">+0.5714</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 25%; background: var(--accent-gold); height: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>🏆 Pontos do Piloto 2026 (<code>season_pts</code>)</span>
+                                <span style="color: var(--accent-green); font-weight: bold;">-0.0779</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 10%; background: var(--accent-green); height: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 0.74rem; color: var(--text-muted); margin-top: 6px; border-top: 1px solid var(--border-color); padding-top: 6px;">
+                        *Valores negativos reduzem a posição predita (favorecem vitória); valores positivos aumentam a posição (pioram o resultado).
+                    </p>
+                </div>
+
+                <!-- Gráfico Modelo 2: Random Forest -->
+                <div class="visual-card" style="justify-content: flex-start; gap: 12px; padding: 18px;">
+                    <h4 style="color: var(--accent-green); text-transform: uppercase; font-size: 0.92rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                        <span>2. Importâncias do Random Forest</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: none;">Gini Importance (%)</span>
+                    </h4>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>🏁 Posição de Largada (<code>grid</code>)</span>
+                                <span style="color: var(--accent-green); font-weight: bold;">48.1%</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 48.1%; background: var(--accent-green); height: 100%; box-shadow: 0 0 8px rgba(57, 255, 20, 0.4);"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>🏎️ Média da Equipe (<code>const_avg_pos</code>)</span>
+                                <span style="color: var(--accent-cyan); font-weight: bold;">20.5%</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 20.5%; background: var(--accent-cyan); height: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>📍 Histórico na Pista (<code>track_avg</code>)</span>
+                                <span style="color: var(--accent-gold); font-weight: bold;">17.8%</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 17.8%; background: var(--accent-gold); height: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>🏆 Pontos do Piloto 2026 (<code>season_pts</code>)</span>
+                                <span style="color: var(--text-light); font-weight: bold;">8.1%</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 8.1%; background: var(--text-light); height: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                                <span>📈 Média Recente (<code>recent_avg_5</code>)</span>
+                                <span style="color: var(--text-muted); font-weight: bold;">5.4%</span>
+                            </div>
+                            <div style="width: 100%; background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 5.4%; background: var(--text-muted); height: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 0.74rem; color: var(--text-muted); margin-top: 6px; border-top: 1px solid var(--border-color); padding-top: 6px;">
+                        *Mede a redução de impureza (Gini) proporcionada por cada variável nas divisões das árvores de decisão.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="slide-footer">
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
+                <span>Slide 5/10</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: FEATURE ENGINEERING (LAPLACE & GRID PROXY) -->
+        <div class="slide" id="slide-6">
             <div class="slide-header">
                 <h2 class="slide-title">Feature Engineering: Laplace & Grid Proxy</h2>
                 <span class="slide-category">Engenharia de Atributos</span>
@@ -785,12 +933,12 @@
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 5/9</span>
+                <span>Slide 6/10</span>
             </div>
         </div>
 
-        <!-- SLIDE 6: PIPELINE DE DADOS MODULAR (TERCEIRA PESSOA) -->
-        <div class="slide" id="slide-6">
+        <!-- SLIDE 7: PIPELINE DE DADOS MODULAR -->
+        <div class="slide" id="slide-7">
             <div class="slide-header">
                 <h2 class="slide-title">Pipeline de Dados Modular</h2>
                 <span class="slide-category">Engenharia de Dados</span>
@@ -813,7 +961,7 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
     <span class="code-comment"># 1. Filtra era turbo-híbrida (>= 2014)</span>
     <span class="code-comment"># 2. Obtém média de largada de 2026 para a corrida alvo</span>
     <span class="code-comment"># 3. Varre corridas calculando features retroativas</span>
-    <span class="code-comment"># 4. Aplica suavização Bayesiana no histórico da pista</span>
+    <span class="code-comment"># 4. Posição média do construtor na temporada</span>
     <span class="code-comment"># 5. Retorna conjuntos X_train, y_train e X_pred</span>
     return X_train, y_train, X_pred, meta_pred
                     </div>
@@ -822,12 +970,12 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 6/9</span>
+                <span>Slide 7/10</span>
             </div>
         </div>
 
-        <!-- SLIDE 7: MODELOS DE PREVISÃO (TERCEIRA PESSOA) -->
-        <div class="slide" id="slide-7">
+        <!-- SLIDE 8: MODELOS DE PREVISÃO -->
+        <div class="slide" id="slide-8">
             <div class="slide-header">
                 <h2 class="slide-title">Modelos Preditivos Utilizados</h2>
                 <span class="slide-category">Modelagem</span>
@@ -845,23 +993,23 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
                 <div class="visual-card">
                     <h4 style="margin-bottom: 12px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Coeficientes (Pesos Explícitos) Aprendidos no Ridge</h4>
                     <ul style="color: var(--text-light); font-size: 0.9rem; list-style-type: none; display: flex; flex-direction: column; gap: 8px;">
-                        <li>🏁 <strong>Grid de Largada:</strong> <span style="color: var(--primary-red); font-weight: bold;">+1.8305</span> (Aumenta a posição = piora)</li>
-                        <li>📍 <strong>Histórico na Pista:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-2.2827</span> (Reduz a posição = melhora)</li>
-                        <li>🏆 <strong>Pontos da Equipe:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-0.7481</span> (Fator força do carro)</li>
-                        <li>🏎️ <strong>Pontos do Piloto 2026:</strong> <span style="color: var(--text-muted); font-weight: bold;">+0.5586</span> (Regularidade no ano)</li>
-                        <li>📈 <strong>Média Recente (7 GPs):</strong> <span style="color: var(--text-muted);">-0.1777</span> (Forma de curto/médio prazo)</li>
+                        <li>🏁 <strong>Grid de Largada:</strong> <span style="color: var(--primary-red); font-weight: bold;">+1.6277</span> (Aumenta a posição = piora)</li>
+                        <li>📍 <strong>Histórico na Pista:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-2.1271</span> (Reduz a posição = melhora)</li>
+                        <li>🏎️ <strong>Posição Média da Equipe:</strong> <span style="color: var(--primary-red); font-weight: bold;">+1.1574</span> (Desempenho da equipe 1-22)</li>
+                        <li>🏆 <strong>Pontos do Piloto 2026:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-0.0779</span> (Regularidade no ano)</li>
+                        <li>📈 <strong>Média Recente (7 GPs):</strong> <span style="color: var(--text-muted); font-weight: bold;">+0.5714</span> (Forma de curto/médio prazo)</li>
                     </ul>
                 </div>
             </div>
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 7/9</span>
+                <span>Slide 8/10</span>
             </div>
         </div>
 
-        <!-- SLIDE 8: INTERACTIVE SIMULATOR (TOP 12 DIPLOMÁTICO) -->
-        <div class="slide" id="slide-8">
+        <!-- SLIDE 9: INTERACTIVE SIMULATOR (TOP 12 DIPLOMÁTICO) -->
+        <div class="slide" id="slide-9">
             <div class="slide-header">
                 <h2 class="slide-title">Previsão GP Hungria 2026 & Simulador (Top 12)</h2>
                 <span class="slide-category">Resultados</span>
@@ -928,12 +1076,12 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 8/9</span>
+                <span>Slide 9/10</span>
             </div>
         </div>
 
-        <!-- SLIDE 9: CONCLUSÃO & ENCERRAMENTO (TERCEIRA PESSOA) -->
-        <div class="slide" id="slide-9">
+        <!-- SLIDE 10: CONCLUSÃO & ENCERRAMENTO -->
+        <div class="slide" id="slide-10">
             <div class="slide-header">
                 <h2 class="slide-title">Conclusões Finais</h2>
                 <span class="slide-category">Encerramento</span>
@@ -963,7 +1111,7 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
             
             <div class="slide-footer">
                 <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
-                <span>Slide 9/9</span>
+                <span>Slide 10/10</span>
             </div>
         </div>
 
@@ -983,6 +1131,7 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
             <span class="dot" onclick="goToSlide(7)"></span>
             <span class="dot" onclick="goToSlide(8)"></span>
             <span class="dot" onclick="goToSlide(9)"></span>
+            <span class="dot" onclick="goToSlide(10)"></span>
         </div>
         
         <button class="nav-btn" onclick="nextSlide()">Próximo ▶</button>
@@ -993,7 +1142,7 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, drive
     <script>
         // Slide Navigation Logic
         let currentSlide = 1;
-        const totalSlides = 9;
+        const totalSlides = 10;
 
         function showSlide(index) {
             if (index < 1 || index > totalSlides) return;
