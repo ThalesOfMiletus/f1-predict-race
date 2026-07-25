@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apresentação CDIA Módulo 5 - F1 Prediction</title>
+    <title>Apresentação CDIA Módulo 5 - F1 Prediction (Thales Cogo & Lázaro Vissoto)</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,17 +11,17 @@
     
     <style>
         :root {
-            --bg-color: #0c0e12;
-            --card-bg: rgba(22, 26, 34, 0.7);
+            --bg-color: #0b0d11;
+            --card-bg: rgba(20, 24, 32, 0.75);
             --border-color: rgba(255, 255, 255, 0.08);
             --primary-red: #ff1801;
-            --primary-red-hover: #e01500;
+            --primary-red-glow: rgba(255, 24, 1, 0.35);
             --text-light: #f3f4f6;
             --text-muted: #9ca3af;
             --accent-cyan: #00f0ff;
             --accent-green: #39ff14;
             --accent-gold: #ffd700;
-            --transition-speed: 0.5s;
+            --transition-speed: 0.4s;
         }
 
         * {
@@ -47,7 +47,7 @@
             letter-spacing: -0.02em;
         }
 
-        /* Background grid effect */
+        /* Background Grid & Glow Effects */
         .bg-grid {
             position: absolute;
             top: 0;
@@ -55,45 +55,45 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 24, 1, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
-                linear-gradient(rgba(255, 255, 255, 0.005) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.005) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+                radial-gradient(circle at 15% 20%, rgba(255, 24, 1, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(0, 240, 255, 0.07) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 35px 35px, 35px 35px;
             z-index: -1;
         }
 
-        /* Presentation Wrapper */
+        /* Container */
         .presentation-container {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            padding: 20px;
+            padding: 15px 25px;
             position: relative;
         }
 
-        /* Slides styling */
+        /* Slide Base */
         .slide {
             position: absolute;
-            width: 92%;
-            max-width: 1200px;
-            height: 82%;
-            max-height: 700px;
+            width: 94%;
+            max-width: 1240px;
+            height: 84%;
+            max-height: 720px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            backdrop-filter: blur(12px);
-            padding: 40px 50px;
+            backdrop-filter: blur(16px);
+            padding: 35px 45px;
             opacity: 0;
-            transform: scale(0.95) translateY(20px);
+            transform: scale(0.96) translateY(15px);
             pointer-events: none;
             transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
         }
 
         .slide.active {
@@ -103,98 +103,116 @@
             z-index: 10;
         }
 
-        /* Cover Slide Specifics */
+        /* Cover Slide */
         .cover-slide {
             text-align: center;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
-        .cover-header {
+        .cover-badge {
+            display: inline-block;
+            background: rgba(255, 24, 1, 0.12);
+            border: 1px solid rgba(255, 24, 1, 0.3);
             color: var(--primary-red);
-            font-size: 1.5rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            font-weight: 600;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 20px;
             margin-bottom: 10px;
-            animation: pulse 2s infinite;
         }
 
         .cover-title {
-            font-size: 3.5rem;
+            font-size: 3.6rem;
             line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 40%, var(--primary-red) 100%);
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--primary-red) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        .cover-subtitle {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .cover-meta {
-            margin-top: 30px;
+            margin-top: 25px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             width: 100%;
-            max-width: 800px;
+            max-width: 850px;
             border-top: 1px solid var(--border-color);
-            padding-top: 30px;
+            padding-top: 25px;
         }
 
         .meta-item h4 {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             color: var(--text-muted);
-            margin-bottom: 5px;
-            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+            letter-spacing: 0.12em;
         }
 
         .meta-item p {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--text-light);
         }
 
-        /* Standard Slide Layout */
+        /* Slide Header & Titles */
         .slide-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
+            padding-bottom: 12px;
             margin-bottom: 15px;
         }
 
         .slide-title {
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             color: var(--text-light);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
         }
 
         .slide-title::before {
             content: '';
             display: inline-block;
             width: 6px;
-            height: 32px;
+            height: 30px;
             background-color: var(--primary-red);
             border-radius: 3px;
+            box-shadow: 0 0 10px var(--primary-red-glow);
         }
 
         .slide-category {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             color: var(--primary-red);
-            font-weight: 600;
+            font-weight: 700;
+            background: rgba(255, 24, 1, 0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 24, 1, 0.2);
         }
 
+        /* Slide Body Layout */
         .slide-body {
             flex: 1;
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 40px;
+            gap: 35px;
             align-items: center;
             overflow-y: auto;
         }
@@ -204,16 +222,16 @@
         }
 
         .slide-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            font-size: 1.35rem;
+            margin-bottom: 10px;
             color: var(--accent-cyan);
         }
 
         .slide-content p {
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.55;
             margin-bottom: 12px;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
         }
 
         .slide-bullets {
@@ -222,26 +240,27 @@
 
         .slide-bullets li {
             position: relative;
-            padding-left: 25px;
+            padding-left: 26px;
             margin-bottom: 10px;
             color: var(--text-light);
-            font-size: 1.05rem;
+            font-size: 1.02rem;
+            line-height: 1.5;
         }
 
         .slide-bullets li::before {
-            content: '🏁';
+            content: '🏎️';
             position: absolute;
             left: 0;
-            top: 2px;
-            font-size: 0.9rem;
+            top: 1px;
+            font-size: 0.95rem;
         }
 
-        /* Visual column card */
+        /* Visual Cards */
         .visual-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 18px;
+            padding: 22px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -251,35 +270,56 @@
         .stat-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 12px;
         }
 
         .stat-box {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 15px;
+            padding: 14px;
             text-align: center;
         }
 
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 1.75rem;
             color: var(--primary-red);
             font-weight: 800;
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            margin-top: 5px;
+            margin-top: 4px;
+        }
+
+        /* Tables */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .custom-table th {
+            text-align: left;
+            padding: 8px 10px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .custom-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         /* Interactive Simulator Styles */
         .sim-container {
             display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 30px;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 25px;
             width: 100%;
             align-items: stretch;
         }
@@ -288,19 +328,23 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 15px;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 16px;
         }
 
         .slider-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
         }
 
         .slider-header {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .slider-label {
@@ -317,7 +361,7 @@
             -webkit-appearance: none;
             width: 100%;
             height: 6px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             border-radius: 3px;
             outline: none;
         }
@@ -338,10 +382,12 @@
         }
 
         .sim-results {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.25);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 15px 20px;
+            padding: 14px 18px;
+            max-height: 480px;
+            overflow-y: auto;
         }
 
         .sim-table {
@@ -351,17 +397,21 @@
 
         .sim-table th {
             text-align: left;
-            padding: 6px;
+            padding: 6px 8px;
             font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: uppercase;
             border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: rgba(12, 14, 18, 0.9);
+            z-index: 2;
         }
 
         .sim-table td {
-            padding: 5px 6px;
-            font-size: 0.85rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 5px 8px;
+            font-size: 0.84rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.025);
         }
 
         .rank-badge {
@@ -380,29 +430,52 @@
         .rank-2 { background: #d7d7d7; color: black; }
         .rank-3 { background: #ad6f2f; color: white; }
 
-        /* Slide Footer & Navigation */
+        /* Code box */
+        .code-box {
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 14px;
+            font-family: monospace;
+            font-size: 0.82rem;
+            color: #d1d5db;
+            overflow-x: auto;
+            border-left: 3px solid var(--accent-cyan);
+            line-height: 1.45;
+        }
+
+        .code-keyword { color: #f472b6; }
+        .code-function { color: #60a5fa; }
+        .code-comment { color: #6b7280; font-style: italic; }
+
+        /* Slide Footer & Navigation Controls */
         .slide-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-color);
-            padding-top: 12px;
-            margin-top: 10px;
-            font-size: 0.85rem;
+            padding-top: 10px;
+            margin-top: 8px;
+            font-size: 0.82rem;
             color: var(--text-muted);
         }
 
-        .footer-nav {
+        .nav-bar {
             display: flex;
-            gap: 15px;
+            justify-content: center;
             align-items: center;
+            gap: 20px;
+            padding: 14px 20px;
+            background: rgba(0,0,0,0.4);
+            border-top: 1px solid var(--border-color);
+            z-index: 100;
         }
 
         .nav-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             color: var(--text-light);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
@@ -435,40 +508,22 @@
             box-shadow: 0 0 8px var(--primary-red);
         }
 
-        /* Code box */
-        .code-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 15px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #d1d5db;
-            overflow-x: auto;
-            border-left: 3px solid var(--accent-cyan);
+        .kb-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
         }
-
-        .code-keyword { color: #f472b6; }
-        .code-function { color: #60a5fa; }
-        .code-comment { color: #6b7280; font-style: italic; }
 
         @keyframes pulse {
             0% { opacity: 0.6; }
             50% { opacity: 1; }
             100% { opacity: 0.6; }
-        }
-
-        /* Keyboard hint */
-        .kb-hint {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            padding: 5px 10px;
-            border-radius: 6px;
         }
     </style>
 </head>
@@ -481,55 +536,56 @@
         <!-- SLIDE 1: COVER -->
         <div class="slide cover-slide active" id="slide-1">
             <div>
-                <p class="cover-header">Apresentação de Projeto</p>
-                <h1 class="cover-title">AED & Previsão Machine Learning na Fórmula 1</h1>
-                <p style="font-size: 1.3rem; color: var(--text-muted); font-family: 'Outfit'; font-weight: 300;">
-                    Desafio Preditivo: O Grande Prêmio da Hungria de 2026
+                <span class="cover-badge">Apresentação de Projeto</span>
+                <h1 class="cover-title">Análise Exploratória & Previsão Preditiva na Fórmula 1</h1>
+                <p class="cover-subtitle">
+                    Desafio de Engenharia de Dados & Machine Learning: Previsão do GP da Hungria de 2026
                 </p>
             </div>
             
             <div class="cover-meta">
                 <div class="meta-item">
-                    <h4>Aluno</h4>
-                    <p>Thales Martins Cogo | Lázaro Vissoto Lorenzi</p>
+                    <h4>Autores</h4>
+                    <p>Thales Cogo & Lázaro Vissoto</p>
                 </div>
                 <div class="meta-item">
                     <h4>Professor</h4>
                     <p>Marcelo Diaz</p>
                 </div>
                 <div class="meta-item">
-                    <h4>Curso</h4>
-                    <p>CDIA - Módulo 5</p>
+                    <h4>Pós-Graduação CDIA</h4>
+                    <p>Módulo 5</p>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 2: INTRODUÇÃO & DESAFIO (REFORMULADO) -->
+        <!-- SLIDE 2: INTRODUÇÃO & DESAFIO (TERCEIRA PESSOA) -->
         <div class="slide" id="slide-2">
             <div class="slide-header">
-                <h2 class="slide-title">Introdução & O Desafio</h2>
+                <h2 class="slide-title">Introdução & O Desafio Preditivo</h2>
                 <span class="slide-category">Conceito</span>
             </div>
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>O Objetivo do Meu Projeto</h3>
-                    <p>Idealizei este trabalho com o objetivo de construir um modelo de aprendizado de máquina capaz de antecipar a classificação final de uma corrida de F1. Para validar o modelo, selecionei a seguinte corrida-alvo:</p>
+                    <h3>Objetivo do Trabalho</h3>
+                    <p>Este trabalho foi desenvolvido com o objetivo de construir uma solução completa de ciência de dados capaz de prever a classificação de chegada de uma corrida de F1 a partir de dados históricos reais:</p>
                     <ul class="slide-bullets">
-                        <li><strong>GP da Hungria de 2026 (Hungaroring):</strong> Uma das pistas mais técnicas e travadas do calendário, apelidada de "Mônaco sem muros", onde ultrapassar na pista é uma tarefa quase impossível.</li>
-                        <li><strong>Foco Metodológico:</strong> Busquei criar uma solução modular (via pipeline reprodutível) e interpretar a influência de cada variável por meio da comparação direta de modelos.</li>
+                        <li><strong>Escolha da Corrida Alvo: GP da Hungria de 2026 (Hungaroring):</strong> Circuito travado de baixa velocidade, conhecido como "Mônaco sem muros", onde ultrapassagens são raras e o grid de largada possui enorme peso preditivo.</li>
+                        <li><strong>Prevenção Rigorosa de Leakage:</strong> Garantia de que todos os atributos agregados (pontos do ano, médias recentes e histórico de pista) fossem calculados estritamente com dados anteriores à corrida alvo.</li>
+                        <li><strong>Objetivo Científico:</strong> Estruturação de uma pipeline reprodutível e comparação do comportamento de modelos lineares (Ridge) e não-lineares (Random Forest).</li>
                     </ul>
                 </div>
                 <div class="visual-card">
-                    <h4 style="margin-bottom: 15px; text-transform: uppercase; color: var(--accent-cyan); font-size: 1rem;">O Escopo Temporal Selecionado</h4>
+                    <h4 style="margin-bottom: 14px; text-transform: uppercase; color: var(--accent-cyan); font-size: 0.95rem;">Escopo Temporal dos Dados</h4>
                     <div class="stat-grid">
                         <div class="stat-box">
-                            <div class="stat-number">2021</div>
-                            <div class="stat-label">Início do Recorte</div>
+                            <div class="stat-number">2014</div>
+                            <div class="stat-label">Início da Era Híbrida</div>
                         </div>
                         <div class="stat-box">
                             <div class="stat-number">2026</div>
-                            <div class="stat-label">Temporada Alvo</div>
+                            <div class="stat-label">Temporada de Foco</div>
                         </div>
                         <div class="stat-box">
                             <div class="stat-number">R10</div>
@@ -537,104 +593,124 @@
                         </div>
                         <div class="stat-box">
                             <div class="stat-number">R11</div>
-                            <div class="stat-label">GP da Hungria (Previsão)</div>
+                            <div class="stat-label">GP Hungria (Predição)</div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Martins Cogo | Lázaro Vissoto Lorenzi</span>
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
                 <span>Slide 2/9</span>
             </div>
         </div>
 
-        <!-- SLIDE 3: EDA (ESTRUTURA & DIAGNÓSTICO) -->
+        <!-- SLIDE 3: EDA (DIAGNÓSTICO E TRATAMENTO) (TERCEIRA PESSOA) -->
         <div class="slide" id="slide-3">
             <div class="slide-header">
-                <h2 class="slide-title">Análise Exploratória (EDA): Diagnóstico</h2>
+                <h2 class="slide-title">Exploração de Dados (EDA): Diagnóstico</h2>
                 <span class="slide-category">Exploração</span>
             </div>
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>Identificando Padrões e Limitações</h3>
-                    <p>Durante a exploração descritiva do dataset de F1, identifiquei gargalos estruturais e comportamentos importantes das variáveis:</p>
+                    <h3>Identificação de Gargalos e Definição do Target</h3>
+                    <p>Durante a análise estatística inicial do dataset de F1, diagnosticaram-se peculiaridades estruturais decisivas para a modelagem:</p>
                     <ul class="slide-bullets">
-                        <li><strong>Tratamento de Desistências (DNF):</strong> Notei que a coluna <code>position</code> clássica contém muitos nulos para abandonos (codificados como <code>\N</code>). Optei por utilizar a coluna <code>positionOrder</code> como variável alvo, pois ela atribui ordenamento de chegada mesmo a abandonos com base nas voltas completadas.</li>
-                        <li><strong>Disparidade de Construtores em 2026:</strong> Observei uma dominância esmagadora da equipe Mercedes no ano de 2026 (venceu 8 das 10 primeiras corridas). Isso me indicou que o desempenho acumulado do carro deve ter forte correlação nas previsões.</li>
+                        <li><strong>Tratamento de Abandonos (DNFs):</strong> Identificou-se que a coluna tradicional <code>position</code> continha muitos nulos (<code>\N</code>) em casos de abandono. Por essa razão, adotou-se a coluna <code>positionOrder</code> como variável alvo (*target*), por ser estritamente numérica e atribuir ordenamento aos abandonos pelas voltas completadas.</li>
+                        <li><strong>Dominância Técnica em 2026:</strong> Observou-se uma disparidade marcante entre os construtores em 2026, com a Mercedes vencendo 8 das 10 primeiras provas. Isso indicou a necessidade de incluir a força da equipe no modelo.</li>
                     </ul>
                 </div>
-                <div class="visual-card">
-                    <h4 style="margin-bottom: 12px; color: var(--accent-cyan); text-transform: uppercase; font-size: 1rem;">Estatísticas Básicas da Variável Alvo</h4>
-                    <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 10px;">Atributo: <code>positionOrder</code> (Classificação final da corrida)</p>
-                    <ul style="color: var(--text-muted); font-size: 0.9rem; list-style-position: inside; display: flex; flex-direction: column; gap: 8px;">
-                        <li><strong>Média Histórica:</strong> 11.23</li>
-                        <li><strong>Mínimo / Máximo:</strong> 1 / 22</li>
-                        <li><strong>Valores Nulos no Dataset:</strong> 0 (Garante treino robusto sem perda de amostras)</li>
-                        <li><strong>Distribuição:</strong> Uniforme por corrida, onde cada linha é um piloto participante.</li>
-                    </ul>
+                <div class="visual-card" style="padding: 14px; max-height: 480px; overflow-y: auto;">
+                    <h4 style="margin-bottom: 8px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span>Amostra Planilha <code>results.csv</code> (Top 22 Linhas)</span>
+                        <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: none;">GP Bélgica 2026 (raceId 1178)</span>
+                    </h4>
+                    <table class="custom-table" style="font-size: 0.78rem;">
+                        <thead>
+                            <tr style="position: sticky; top: 0; background: rgba(12, 14, 18, 0.95); z-index: 5;">
+                                <th>Piloto</th>
+                                <th>grid</th>
+                                <th>pos</th>
+                                <th style="color: var(--accent-cyan);">posOrder</th>
+                                <th>pts</th>
+                                <th>status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="font-weight: 600;">G. Bortoleto</td><td>8</td><td>8</td><td style="color: var(--accent-cyan); font-weight: bold;">8</td><td>4.0</td><td>Finished</td></tr>
+                            <tr><td style="font-weight: 600;">L. Lawson</td><td>9</td><td>12</td><td style="color: var(--accent-cyan); font-weight: bold;">12</td><td>0.0</td><td>Finished</td></tr>
+                            <tr><td style="font-weight: 600;">N. Hülkenberg</td><td>12</td><td>13</td><td style="color: var(--accent-cyan); font-weight: bold;">13</td><td>0.0</td><td>Finished</td></tr>
+                            <tr><td style="font-weight: 600;">O. Bearman</td><td>14</td><td>14</td><td style="color: var(--accent-cyan); font-weight: bold;">14</td><td>0.0</td><td>Finished</td></tr>
+                            <tr><td style="font-weight: 600;">A. Albon</td><td>15</td><td>15</td><td style="color: var(--accent-cyan); font-weight: bold;">15</td><td>0.0</td><td>Finished</td></tr>
+                            <tr><td style="font-weight: 600;">V. Bottas</td><td>17</td><td>18</td><td style="color: var(--accent-cyan); font-weight: bold;">18</td><td>0.0</td><td>+1 Lap</td></tr>
+                            <tr><td style="font-weight: 600;">F. Alonso</td><td>22</td><td>19</td><td style="color: var(--accent-cyan); font-weight: bold;">19</td><td>0.0</td><td>+2 Laps</td></tr>
+                            <tr style="background: rgba(255, 24, 1, 0.08);"><td style="font-weight: 600;">L. Stroll</td><td>20</td><td style="color: var(--primary-red); font-weight: bold;">\N</td><td style="color: var(--accent-cyan); font-weight: bold;">20</td><td>0.0</td><td style="color: var(--primary-red);">Gearbox</td></tr>
+                            <tr style="background: rgba(255, 24, 1, 0.08);"><td style="font-weight: 600;">S. Pérez</td><td>18</td><td style="color: var(--primary-red); font-weight: bold;">\N</td><td style="color: var(--accent-cyan); font-weight: bold;">21</td><td>0.0</td><td style="color: var(--primary-red);">Suspension</td></tr>
+                            <tr style="background: rgba(255, 24, 1, 0.08);"><td style="font-weight: 600;">G. Russell</td><td>3</td><td style="color: var(--primary-red); font-weight: bold;">\N</td><td style="color: var(--accent-cyan); font-weight: bold;">22</td><td>0.0</td><td style="color: var(--primary-red);">Collision</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             
             <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Martins Cogo | Lázaro Vissoto Lorenzi</span>
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
                 <span>Slide 3/9</span>
             </div>
         </div>
 
-        <!-- SLIDE 4: MATRIZ DE CORRELAÇÃO (NOVO SLIDE ESPECÍFICO) -->
+        <!-- SLIDE 4: MATRIZ DE CORRELAÇÃO (TERCEIRA PESSOA) -->
         <div class="slide" id="slide-4">
             <div class="slide-header">
-                <h2 class="slide-title">A Matriz de Correlação</h2>
-                <span class="slide-category">Métricas</span>
+                <h2 class="slide-title">A Matriz de Correlação Linear</h2>
+                <span class="slide-category">Estatística</span>
             </div>
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>Análise de Dependências das Variáveis</h3>
-                    <p>Avaliei a correlação linear entre os atributos explicativos numéricos e a classificação final da corrida (<code>positionOrder</code>):</p>
+                    <h3>Análise de Dependência das Variáveis</h3>
+                    <p>Foi calculada a matriz de correlação linear para medir o grau de associação entre as variáveis explicativas e a posição final de chegada (<code>positionOrder</code>):</p>
                     <ul class="slide-bullets">
-                        <li><strong>Posição de Largada (Grid) ➔ Correlação: <span style="color: var(--accent-green);">+0.61 (em 2026)</span></strong>
-                            <br>É a correlação positiva mais forte. Demonstra empiricamente que largar no fundo do grid aumenta muito o número da posição final de chegada (piorando o resultado).
+                        <li><strong>Grid de Largada (<code>grid</code>): <span style="color: var(--accent-green);">+0.6132 (em 2026)</span></strong>
+                            <br>Demonstrou-se estatisticamente que quanto maior a posição de largada (fundo do grid), maior será o número da posição de chegada (pior o resultado). É o preditor isolado mais forte.
                         </li>
-                        <li><strong>Pontos do Ano do Piloto ➔ Correlação: <span style="color: var(--accent-green);">-0.54</span></strong>
-                            <br>Correlação negativa forte. Indica que pilotos que acumulam mais pontos no ano tendem a chegar em posições menores de classificação (mais próximos do 1º lugar).
+                        <li><strong>Pontos do Piloto no Ano (<code>driver_season_points</code>): <span style="color: var(--accent-cyan);">-0.5401</span></strong>
+                            <br>A correlação negativa indica que pilotos com maior pontuação acumulada tendem a chegar em posições menores (mais perto do 1º lugar).
                         </li>
-                        <li><strong>Pontos do Construtor ➔ Correlação: <span style="color: var(--text-muted);">-0.38</span></strong>
-                            <br>Reflete a influência do carro: equipes com maior pontuação no ano garantem melhores colocações médias para ambos os seus pilotos.
+                        <li><strong>Pontos do Construtor (<code>constructor_season_points</code>): <span style="color: var(--text-muted);">-0.3814</span></strong>
+                            <br>Reflete a influência do equipamento na colocação média da dupla de pilotos.
                         </li>
                     </ul>
                 </div>
                 <div class="visual-card">
-                    <h4 style="margin-bottom: 15px; color: var(--accent-cyan); text-transform: uppercase; font-size: 1rem;">Matriz de Correlação Linear Simplificada (2026)</h4>
-                    <table class="sim-table" style="font-size: 0.9rem;">
+                    <h4 style="margin-bottom: 12px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Tabela de Correlação com o Target (positionOrder)</h4>
+                    <table class="custom-table">
                         <thead>
                             <tr>
-                                <th>Variável A</th>
-                                <th>Variável B (Alvo)</th>
-                                <th style="text-align: right;">Coeficiente</th>
+                                <th>Variável Explicativa</th>
+                                <th>Escala</th>
+                                <th style="text-align: right;">Correlação</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>grid</code> (Largada)</td>
-                                <td><code>positionOrder</code></td>
+                                <td><code>grid</code> (Largada em 2026)</td>
+                                <td>1 a 22</td>
                                 <td style="text-align: right; color: var(--accent-green); font-weight: bold;">+0.6132</td>
                             </tr>
                             <tr>
                                 <td><code>driver_season_points</code></td>
-                                <td><code>positionOrder</code></td>
-                                <td style="text-align: right; color: var(--accent-green); font-weight: bold;">-0.5401</td>
+                                <td>Pontos 2026</td>
+                                <td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">-0.5401</td>
                             </tr>
                             <tr>
                                 <td><code>constructor_season_points</code></td>
-                                <td><code>positionOrder</code></td>
+                                <td>Pontos Equipe</td>
                                 <td style="text-align: right; color: var(--text-muted); font-weight: bold;">-0.3814</td>
                             </tr>
                             <tr>
                                 <td><code>driver_recent_avg_points</code></td>
-                                <td><code>positionOrder</code></td>
+                                <td>Média 3 GPs</td>
                                 <td style="text-align: right; color: var(--text-muted); font-weight: bold;">-0.1982</td>
                             </tr>
                         </tbody>
@@ -643,12 +719,12 @@
             </div>
             
             <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Martins Cogo | Lázaro Vissoto Lorenzi</span>
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
                 <span>Slide 4/9</span>
             </div>
         </div>
 
-        <!-- SLIDE 5: FEATURE ENGINEERING (LAPLACE & GRID PROXY) -->
+        <!-- SLIDE 5: FEATURE ENGINEERING (LAPLACE & GRID PROXY) (TERCEIRA PESSOA) -->
         <div class="slide" id="slide-5">
             <div class="slide-header">
                 <h2 class="slide-title">Feature Engineering: Laplace & Grid Proxy</h2>
@@ -657,47 +733,47 @@
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>Contornando Ruídos e Limitações Físicas</h3>
-                    <p>Para construir um modelo preditivo realista, idealizei duas formulações matemáticas personalizadas na fase de engenharia de atributos:</p>
+                    <h3>Soluções Aplicadas a Anomalias nos Dados</h3>
+                    <p>Desenvolveram-se duas estratégias de tratamento de atributos para eliminar vieses na corrida a ser prevista:</p>
                     <ul class="slide-bullets">
-                        <li><strong>Suavização de Laplace (Bayesiana) para Estreantes:</strong> Kimi Antonelli é o líder de 2026, mas só correu 1 vez na Hungria (em 2025, chegando em 10º). A média crua o penalizava com apenas 1.0 ponto. 
-                            <br>➔ <em>Como resolvi:</em> Apliquei suavização mesclando o histórico da pista com a média geral de pontos da temporada atual (k=3), elevando seu histórico de 1.0 para **14.0**.
+                        <li><strong>Suavização de Laplace (Bayesiana) para Estreantes:</strong> Kimi Antonelli lidera o campeonato de 2026, mas por possuir apenas 1 corrida na Hungria (em 2025, chegando em 10º), seu histórico cru era de 1.0 ponto. 
+                            <br>➔ <em>Solução Adotada:</em> Aplicou-se Laplace com $K=3$ mesclando o histórico da pista com sua média de 2026, elevando seu indicador de **1.0 para 14.0**.
                         </li>
-                        <li><strong>Média de Grid 2026 contra Punições:</strong> Norris e Hadjar largaram atrás na Bélgica por punição de motor. Usar o grid da corrida anterior para prever a Hungria distorceria o resultado.
-                            <br>➔ <em>Como resolvi:</em> Passei a utilizar a **média da posição de largada em 2026** como proxy para a corrida alvo. Norris subiu para <strong>6.1</strong> e Hadjar para <strong>9.4</strong> de grid estimado.
+                        <li><strong>Grid Médio de 2026 contra Punições:</strong> Norris e Hadjar largaram atrás na Bélgica por punições de troca de motor. O uso desse grid bruto para a Hungria arruinaria a previsão.
+                            <br>➔ <em>Solução Adotada:</em> Utilizou-se a **média de largada em 2026** como proxy da Hungria. Norris subiu para <strong>6.1</strong> e Hadjar para <strong>9.4</strong> de grid estimado.
                         </li>
                     </ul>
                 </div>
-                <div class="visual-card" style="justify-content: flex-start; gap: 15px;">
-                    <h4 style="color: var(--accent-cyan); text-transform: uppercase; font-size: 1rem;">O Impacto das Correções nos Dados de Entrada</h4>
-                    <table class="sim-table" style="font-size: 0.85rem;">
+                <div class="visual-card" style="justify-content: flex-start; gap: 14px;">
+                    <h4 style="color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Impacto das Modificações nos Dados</h4>
+                    <table class="custom-table" style="font-size: 0.84rem;">
                         <thead>
                             <tr>
                                 <th>Piloto</th>
-                                <th>Grid Antigo</th>
+                                <th>Grid Antigo (Spa)</th>
                                 <th>Grid Médio (Novo)</th>
-                                <th>Track Avg Antigo</th>
+                                <th>Track Avg Crua</th>
                                 <th>Track Avg Suavizado</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Kimi Antonelli</td>
-                                <td>1.0 (Spa)</td>
+                                <td>1.0</td>
                                 <td style="color: var(--accent-green); font-weight: bold;">1.7</td>
                                 <td>1.0 (1 GP)</td>
                                 <td style="color: var(--accent-green); font-weight: bold;">14.0</td>
                             </tr>
                             <tr>
                                 <td>Lando Norris</td>
-                                <td>13.0 (Spa)</td>
+                                <td>13.0 (Punição)</td>
                                 <td style="color: var(--accent-green); font-weight: bold;">6.1</td>
-                                <td>13.4</td>
-                                <td>11.3</td>
+                                <td>9.2</td>
+                                <td>9.2</td>
                             </tr>
                             <tr>
                                 <td>Isack Hadjar</td>
-                                <td>21.0 (Spa)</td>
+                                <td>21.0 (Punição)</td>
                                 <td style="color: var(--accent-green); font-weight: bold;">9.4</td>
                                 <td>0.0 (0 GP)</td>
                                 <td style="color: var(--accent-green); font-weight: bold;">4.5</td>
@@ -708,12 +784,12 @@
             </div>
             
             <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Martins Cogo | Lázaro Vissoto Lorenzi</span>
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
                 <span>Slide 5/9</span>
             </div>
         </div>
 
-        <!-- SLIDE 6: PIPELINE DE DADOS (NOVO SLIDE ESPECÍFICO) -->
+        <!-- SLIDE 6: PIPELINE DE DADOS MODULAR (TERCEIRA PESSOA) -->
         <div class="slide" id="slide-6">
             <div class="slide-header">
                 <h2 class="slide-title">Pipeline de Dados Modular</h2>
@@ -722,35 +798,35 @@
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>A Arquitetura da Função de Pipeline</h3>
-                    <p>Desenvolvi uma infraestrutura de dados modular centralizada na função <code>prepare_f1_pipeline</code>. Esse fluxo foi estruturado para resolver os seguintes pontos:</p>
+                    <h3>Estrutura da Pipeline em Python</h3>
+                    <p>Encapsulou-se todo o fluxo de tratamento na função <code>prepare_f1_pipeline</code>, garantindo modularidade e reprodutibilidade:</p>
                     <ul class="slide-bullets">
-                        <li><strong>Cálculo Dinâmico e Retroativo:</strong> A função varre as corridas históricas uma a uma. Para cada piloto, ela calcula as somas e médias de performance considerando apenas o histórico anterior ao dia da corrida alvo.</li>
-                        <li><strong>Preenchimento e Padronização:</strong> Mediana aplicada em NaNs históricos de grid e escalonamento de features com <code>StandardScaler</code> da biblioteca <code>scikit-learn</code>.</li>
-                        <li><strong>Divisão Segura Treino/Teste:</strong> Retorna o conjunto de dados dividido, pronto para o treinamento e a predição.</li>
+                        <li><strong>Janela Temporal Retroativa:</strong> Filtraram-se os dados a partir da era turbo-híbrida (2014-2026). O cálculo de atributos varre cada corrida de forma retroativa, garantindo zero vazamento de dados futuros.</li>
+                        <li><strong>Normalização com StandardScaler:</strong> Padronizaram-se as variáveis numéricas derivadas para que atributos em escalas de centenas (pontos) não distorcessem os coeficientes lineares.</li>
+                        <li><strong>Saída Estruturada:</strong> A pipeline entrega diretamente os conjuntos `X_train`, `y_train` e `X_pred` higienizados.</li>
                     </ul>
                 </div>
                 <div class="visual-card">
-                    <h4 style="margin-bottom: 10px; color: var(--accent-cyan); text-transform: uppercase; font-size: 1rem;">Estrutura do Fluxo do Pipeline</h4>
-                    <div class="code-box" style="font-size: 0.8rem;">
-def <span class="code-function">prepare_f1_pipeline</span>(races, results, target_race_id):
-    <span class="code-comment"># 1. Filtra linha temporal >= 2021</span>
-    <span class="code-comment"># 2. Calcula média de grid de 2026 para a corrida de predição</span>
+                    <h4 style="margin-bottom: 10px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Assinatura do Código da Pipeline</h4>
+                    <div class="code-box">
+def <span class="code-function">prepare_f1_pipeline</span>(races, results, drivers, constructors, target_race_id, k=3):
+    <span class="code-comment"># 1. Filtra era turbo-híbrida (>= 2014)</span>
+    <span class="code-comment"># 2. Obtém média de largada de 2026 para a corrida alvo</span>
     <span class="code-comment"># 3. Varre corridas calculando features retroativas</span>
-    <span class="code-comment"># 4. Aplica suavização Bayesiana no histórico de pista</span>
-    <span class="code-comment"># 5. Divide dados em Treino (X_train, y_train) e Predição (X_pred)</span>
-    return X_train, y_train, X_pred
+    <span class="code-comment"># 4. Aplica suavização Bayesiana no histórico da pista</span>
+    <span class="code-comment"># 5. Retorna conjuntos X_train, y_train e X_pred</span>
+    return X_train, y_train, X_pred, meta_pred
                     </div>
                 </div>
             </div>
             
             <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Martins Cogo | Lázaro Vissoto Lorenzi</span>
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
                 <span>Slide 6/9</span>
             </div>
         </div>
 
-        <!-- SLIDE 7: MODELOS DE PREVISÃO (NOVO SLIDE ESPECÍFICO) -->
+        <!-- SLIDE 7: MODELOS DE PREVISÃO (TERCEIRA PESSOA) -->
         <div class="slide" id="slide-7">
             <div class="slide-header">
                 <h2 class="slide-title">Modelos Preditivos Utilizados</h2>
@@ -759,33 +835,32 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>Comparação entre Modelos Lineares e Não-Lineares</h3>
-                    <p>Optei por utilizar dois modelos preditivos com propósitos complementares para realizar a previsão final do GP da Hungria:</p>
+                    <h3>Comparação entre Ridge e Random Forest</h3>
+                    <p>Treinaram-se e compararam-se dois modelos preditivos com características distintas para a previsão da corrida:</p>
                     <ul class="slide-bullets">
-                        <li><strong>Regressão Ridge (Linear Regularizado):</strong> Selecionei este modelo por ele permitir a interpretação direta dos pesos por meio dos seus coeficientes. A regularização L2 previne sobreajuste.</li>
-                        <li><strong>Random Forest Regressor (Ensemble baseado em Árvores):</strong> Ideal para capturar relações não-lineares nos dados e lidar de forma robusta com outliers de corrida (como DNFs e acidentes).</li>
+                        <li><strong>Regressão Ridge (Linear Regularizado):</strong> Escolheu-se este modelo por sua transparência, permitindo expor os coeficientes exatos (pesos) de cada atributo escalonado.</li>
+                        <li><strong>Random Forest Regressor (Ensemble de Árvores):</strong> Escolheu-se este modelo por sua capacidade não-linear de capturar interações complexas e lidar com dispersões de corrida.</li>
                     </ul>
                 </div>
                 <div class="visual-card">
-                    <h4 style="margin-bottom: 12px; color: var(--accent-cyan); text-transform: uppercase; font-size: 1rem;">Coeficientes (Pesos Explícitos) do Ridge</h4>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px;">Valores associados às variáveis escalonadas:</p>
+                    <h4 style="margin-bottom: 12px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.95rem;">Coeficientes (Pesos Explícitos) Aprendidos no Ridge</h4>
                     <ul style="color: var(--text-light); font-size: 0.9rem; list-style-type: none; display: flex; flex-direction: column; gap: 8px;">
-                        <li>🏁 <strong>Grid de Largada:</strong> <span style="color: var(--primary-red); font-weight: bold;">+2.9542</span> (Fator determinante)</li>
-                        <li>🏆 <strong>Pontos na Temporada:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-1.0211</span> (Força do ano)</li>
-                        <li>📍 <strong>Histórico na Pista:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-0.8920</span> (Aptidão ao circuito)</li>
-                        <li>🏎️ <strong>Pontos do Construtor:</strong> <span style="color: var(--text-muted);">-0.3204</span> (Fator carro)</li>
-                        <li>📈 <strong>Média Recente:</strong> <span style="color: var(--text-muted);">-0.1912</span> (Forma atual)</li>
+                        <li>🏁 <strong>Grid de Largada:</strong> <span style="color: var(--primary-red); font-weight: bold;">+1.8305</span> (Aumenta a posição = piora)</li>
+                        <li>📍 <strong>Histórico na Pista:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-2.2827</span> (Reduz a posição = melhora)</li>
+                        <li>🏆 <strong>Pontos da Equipe:</strong> <span style="color: var(--accent-cyan); font-weight: bold;">-0.7481</span> (Fator força do carro)</li>
+                        <li>🏎️ <strong>Pontos do Piloto 2026:</strong> <span style="color: var(--text-muted); font-weight: bold;">+0.5586</span> (Regularidade no ano)</li>
+                        <li>📈 <strong>Média Recente (3 GPs):</strong> <span style="color: var(--text-muted);">-0.0997</span> (Forma de curto prazo)</li>
                     </ul>
                 </div>
             </div>
             
             <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Martins Cogo | Lázaro Vissoto Lorenzi</span>
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
                 <span>Slide 7/9</span>
             </div>
         </div>
 
-        <!-- SLIDE 8: INTERACTIVE SIMULATOR (TOP 12) -->
+        <!-- SLIDE 8: INTERACTIVE SIMULATOR (TOP 12 DIPLOMÁTICO) -->
         <div class="slide" id="slide-8">
             <div class="slide-header">
                 <h2 class="slide-title">Previsão GP Hungria 2026 & Simulador (Top 12)</h2>
@@ -795,43 +870,42 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
             <div class="slide-body full-width">
                 <div class="sim-container">
                     <div class="sim-sliders">
-                        <h4 style="text-transform: uppercase; color: var(--primary-red); margin-bottom: 5px; font-size: 1.1rem;">Simulador de Pesos</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">
-                            Ajuste os controles deslizantes abaixo para alterar em tempo real o peso de cada variável e recalcular as previsões para o GP da Hungria (Top 12).
+                        <h4 style="text-transform: uppercase; color: var(--primary-red); margin-bottom: 4px; font-size: 1.05rem;">Simulador de Pesos</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
+                            Altere os sliders para ajustar em tempo real o peso de cada variável e recalcular o ranking previsto dos 12 primeiros pilotos.
                         </p>
                         
                         <div class="slider-group">
                             <div class="slider-header">
                                 <span class="slider-label">Peso da Posição de Largada (Grid)</span>
-                                <span class="slider-val" id="val-grid">60%</span>
+                                <span class="slider-val" id="val-grid">50%</span>
                             </div>
-                            <input type="range" id="slide-grid" min="0" max="100" value="60" oninput="updateSimulation()">
+                            <input type="range" id="slide-grid" min="0" max="100" value="50" oninput="updateSimulation()">
                         </div>
                         
                         <div class="slider-group">
                             <div class="slider-header">
                                 <span class="slider-label">Peso da Temporada Atual (Pontos)</span>
-                                <span class="slider-val" id="val-season">25%</span>
+                                <span class="slider-val" id="val-season">30%</span>
                             </div>
-                            <input type="range" id="slide-season" min="0" max="100" value="25" oninput="updateSimulation()">
+                            <input type="range" id="slide-season" min="0" max="100" value="30" oninput="updateSimulation()">
                         </div>
                         
                         <div class="slider-group">
                             <div class="slider-header">
                                 <span class="slider-label">Peso do Histórico da Pista (Suavizado)</span>
-                                <span class="slider-val" id="val-track">15%</span>
+                                <span class="slider-val" id="val-track">20%</span>
                             </div>
-                            <input type="range" id="slide-track" min="0" max="100" value="15" oninput="updateSimulation()">
+                            <input type="range" id="slide-track" min="0" max="100" value="20" oninput="updateSimulation()">
                         </div>
                         
-                        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">
-                            *Fórmula: <code>Score = (W_grid * NormGrid + W_season * NormSeason + W_track * NormTrack)</code>. 
-                            Menor grid de largada e mais pontos aumentam o score do piloto (melhor posição predita).
+                        <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px; line-height: 1.3;">
+                            *Fórmula: <code>Score = (W_grid * NormGrid + W_season * NormSeason + W_track * NormTrack)</code>.
                         </div>
                     </div>
                     
                     <div class="sim-results">
-                        <h4 style="text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 8px; display: flex; justify-content: space-between; font-size: 1.1rem;">
+                        <h4 style="text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.05rem; display: flex; justify-content: space-between;">
                             <span>Classificação Prevista GP Hungria (Top 12)</span>
                         </h4>
                         
@@ -853,48 +927,50 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
             </div>
             
             <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Martins Cogo | Lázaro Vissoto Lorenzi</span>
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
                 <span>Slide 8/9</span>
             </div>
         </div>
 
-        <!-- SLIDE 9: CONCLUSÃO & ENCERRAMENTO (REFORMULADO) -->
+        <!-- SLIDE 9: CONCLUSÃO & ENCERRAMENTO (TERCEIRA PESSOA) -->
         <div class="slide" id="slide-9">
             <div class="slide-header">
                 <h2 class="slide-title">Conclusões Finais</h2>
-                <span class="slide-category">Conclusão</span>
+                <span class="slide-category">Encerramento</span>
             </div>
             
             <div class="slide-body">
                 <div class="slide-content">
-                    <h3>Resultados e Contribuições do Trabalho</h3>
-                    <p>Ao finalizar este trabalho preditivo de Fórmula 1, consolido as seguintes conclusões técnicas importantes:</p>
+                    <h3>Principais Entregas e Aprendizados</h3>
+                    <p>Ao concluir este projeto de Ciência de Dados aplicado à Fórmula 1, destacam-se as seguintes contribuições técnicas alcançadas:</p>
                     <ul class="slide-bullets">
-                        <li><strong>Sucesso nas Suavizações de Dados:</strong> Comprovei que a aplicação do grid médio e da suavização Bayesiana de Laplace resolveu com sucesso as distorções que penalizavam Kimi Antonelli (líder da temporada), Norris e Hadjar.</li>
-                        <li><strong>Interpretabilidade Aumentada:</strong> A comparação do Random Forest com a Regressão Ridge permitiu que eu demonstrasse a influência realística de cada feature no modelo.</li>
-                        <li><strong>Hamilton e Antonelli como Favoritos:</strong> As previsões de ambos os modelos apontam a Mercedes e a Ferrari como as equipes a serem batidas, com Antonelli surgindo como favorito e Hamilton como maior ameaça pelo histórico de pista.</li>
+                        <li><strong>Sucesso na Engenharia de Atributos:</strong> Eliminou-se distorções críticas com o Grid Médio de 2026 e a Suavização de Laplace, garantindo que o líder Kimi Antonelli e pilotos punidos como Norris e Hadjar tivessem previsões justas.</li>
+                        <li><strong>Convergência e Explicabilidade:</strong> A combinação do Ridge com o Random Forest permitiu comprovar que a largada e a aptidão na pista são os fatores dominantes no Hungaroring.</li>
+                        <li><strong>Favoritismo Validado:</strong> As previsões convergem apontando Andrea Kimi Antonelli (Mercedes) e Lewis Hamilton (Ferrari) como os grandes postulantes à vitória.</li>
                     </ul>
                 </div>
-                <div class="visual-card" style="text-align: center; gap: 15px;">
+                <div class="visual-card" style="text-align: center; gap: 14px;">
                     <h3 style="color: var(--primary-red); font-size: 2rem;">Muito Obrigado!</h3>
-                    <p style="color: var(--text-light); font-size: 1.15rem; font-weight: 600;">Estou à disposição para dúvidas e discussões.</p>
-                    <div style="border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 10px; font-size: 0.9rem; color: var(--text-muted);">
-                        <p><strong>Projeto F1 Predictor</strong></p>
-                        <p style="margin-top: 5px; font-weight: bold; color: var(--accent-cyan);">Pós-Graduação CDIA - CD005</p>
+                    <p style="color: var(--text-light); font-size: 1.15rem; font-weight: 600;">Aberto a perguntas e considerações.</p>
+                    <div style="border-top: 1px solid var(--border-color); padding-top: 14px; margin-top: 8px; font-size: 0.88rem; color: var(--text-muted);">
+                        <p><strong>Projeto de Pós-Graduação: Previsão de F1</strong></p>
+                        <p>Autores: <strong>Thales Cogo & Lázaro Vissoto</strong></p>
+                        <p>Orientador: <strong>Prof. Marcelo Diaz</strong></p>
+                        <p style="margin-top: 4px; font-weight: bold; color: var(--accent-cyan);">Pós-Graduação CDIA - CD005</p>
                     </div>
                 </div>
             </div>
             
             <div class="slide-footer">
-                <span>Pós-Graduação CDIA - Módulo 5 | Thales Martins Cogo | Lázaro Vissoto Lorenzi</span>
+                <span>Pós-Graduação CDIA - Módulo 5 | Thales Cogo & Lázaro Vissoto</span>
                 <span>Slide 9/9</span>
             </div>
         </div>
 
     </div>
 
-    <!-- Slide Navigation Footer Controls -->
-    <div style="display: flex; justify-content: center; align-items: center; gap: 20px; padding: 20px; background: rgba(0,0,0,0.3); border-top: 1px solid var(--border-color); z-index: 100;">
+    <!-- Navigation Controls -->
+    <div class="nav-bar">
         <button class="nav-btn" onclick="prevSlide()">◀ Anterior</button>
         
         <div class="progress-dots">
@@ -915,18 +991,16 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
     <div class="kb-hint">Dica: Use as setas do teclado ( ◀ / ▶ ) para navegar.</div>
 
     <script>
-        // Slides Navigation Logic
+        // Slide Navigation Logic
         let currentSlide = 1;
         const totalSlides = 9;
 
         function showSlide(index) {
             if (index < 1 || index > totalSlides) return;
             
-            // Hide current active slide
             document.querySelector('.slide.active').classList.remove('active');
             document.querySelector('.dot.active').classList.remove('active');
             
-            // Show target slide
             document.getElementById(`slide-${index}`).classList.add('active');
             document.querySelectorAll('.dot')[index - 1].classList.add('active');
             
@@ -949,7 +1023,6 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
             showSlide(index);
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') {
                 nextSlide();
@@ -958,30 +1031,27 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
             }
         });
 
-        // F1 Prediction Simulator Logic
-        // Raw driver data for the top 12 drivers based on actual target features
+        // F1 Prediction Simulator Data (Top 12 Drivers)
         const driversData = [
             { id: 863, name: "Andrea Kimi Antonelli", team: "Mercedes", points: 183, grid: 1.7, track: 14.0 },
-            { id: 1, name: "Lewis Hamilton", team: "Ferrari", points: 139, grid: 4.3, track: 13.2 },
-            { id: 846, name: "Lando Norris", team: "McLaren", points: 77, grid: 6.1, track: 11.3 },
+            { id: 1, name: "Lewis Hamilton", team: "Ferrari", points: 139, grid: 4.3, track: 16.1 },
+            { id: 847, name: "George Russell", team: "Mercedes", points: 128, grid: 2.6, track: 8.5 },
             { id: 857, name: "Oscar Piastri", team: "McLaren", points: 75, grid: 5.9, track: 12.6 },
-            { id: 847, name: "George Russell", team: "Mercedes", points: 128, grid: 2.6, track: 10.7 },
-            { id: 830, name: "Max Verstappen", team: "Red Bull", points: 82, grid: 6.8, track: 11.2 },
-            { id: 844, name: "Charles Leclerc", team: "Ferrari", points: 109, grid: 4.5, track: 8.8 },
-            { id: 859, name: "Liam Lawson", team: "RB F1 Team", points: 34, grid: 10.5, track: 3.5 },
+            { id: 846, name: "Lando Norris", team: "McLaren", points: 77, grid: 6.1, track: 9.2 },
+            { id: 844, name: "Charles Leclerc", team: "Ferrari", points: 109, grid: 4.5, track: 7.5 },
+            { id: 830, name: "Max Verstappen", team: "Red Bull", points: 82, grid: 6.8, track: 11.3 },
             { id: 865, name: "Isack Hadjar", team: "Red Bull", points: 60, grid: 9.4, track: 4.5 },
-            { id: 864, name: "Gabriel Bortoleto", team: "Audi", points: 10, grid: 12.8, track: 2.8 },
+            { id: 842, name: "Pierre Gasly", team: "Alpine F1 Team", points: 41, grid: 11.0, track: 3.6 },
+            { id: 859, name: "Liam Lawson", team: "RB F1 Team", points: 34, grid: 10.5, track: 3.5 },
             { id: 866, name: "Arvid Lindblad", team: "RB F1 Team", points: 20, grid: 11.1, track: 2.0 },
-            { id: 842, name: "Pierre Gasly", team: "Alpine F1 Team", points: 41, grid: 11.0, track: 2.9 }
+            { id: 861, name: "Franco Colapinto", team: "Alpine F1 Team", points: 20, grid: 13.4, track: 1.5 }
         ];
 
         function updateSimulation() {
-            // Get slider values
             const wGrid = parseFloat(document.getElementById('slide-grid').value);
             const wSeason = parseFloat(document.getElementById('slide-season').value);
             const wTrack = parseFloat(document.getElementById('slide-track').value);
             
-            // Normalize sum to 100% just for display labels
             const total = wGrid + wSeason + wTrack;
             const pctGrid = total > 0 ? Math.round((wGrid / total) * 100) : 0;
             const pctSeason = total > 0 ? Math.round((wSeason / total) * 100) : 0;
@@ -991,17 +1061,12 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
             document.getElementById('val-season').innerText = pctSeason + "%";
             document.getElementById('val-track').innerText = pctTrack + "%";
             
-            // Compute score for each driver
             const simulatedResults = driversData.map(driver => {
-                // Normalize attributes to 0-1 range based on bounds
-                // For grid: lower grid is best (1st is best). Use (22 - grid)/22.
+                // Normalize attributes (0 to 1)
                 const normGrid = (22 - driver.grid) / 22;
-                // For season points: max points in dataset is 200
                 const normSeason = driver.points / 200;
-                // For track average points: max is 25
                 const normTrack = driver.track / 25;
                 
-                // Calculate weighted score
                 const weightedScore = (wGrid * normGrid + wSeason * normSeason + wTrack * normTrack);
                 
                 return {
@@ -1011,10 +1076,8 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
                 };
             });
             
-            // Sort by score in descending order (highest score is 1st)
             simulatedResults.sort((a, b) => b.score - a.score);
             
-            // Render table rows
             const tbody = document.getElementById('sim-tbody');
             tbody.innerHTML = '';
             
@@ -1031,7 +1094,7 @@ def <span class="code-function">prepare_f1_pipeline</span>(races, results, targe
             });
         }
 
-        // Run simulation initialization
+        // Initialize simulation on load
         updateSimulation();
     </script>
 </body>
