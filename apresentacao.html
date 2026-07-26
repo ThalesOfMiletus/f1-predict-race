@@ -455,7 +455,6 @@
                     <p>Este trabalho foi desenvolvido com o objetivo de construir uma solução completa de ciência de dados capaz de prever a classificação de chegada de uma corrida de F1 a partir de dados históricos reais:</p>
                     <ul class="slide-bullets">
                         <li><strong>Corrida Alvo: GP da Hungria de 2026 (Hungaroring):</strong> Circuito travado de baixa velocidade, conhecido como "Mônaco sem muros", onde ultrapassagens são raras e o grid de largada possui enorme peso preditivo.</li>
-                        <li><strong>Prevenção de Vazamento de Dados:</strong> Garantia de que todos os atributos agregados (pontos do ano, médias recentes e histórico de pista) fossem calculados estritamente com dados anteriores à corrida alvo.</li>
                         <li><strong>Objetivo Científico:</strong> Estruturação de uma pipeline reprodutível e comparação do comportamento de modelo linear (Ridge) e não-linear (Random Forest).</li>
                     </ul>
                 </div>
@@ -558,7 +557,7 @@
                     <ul class="slide-bullets" style="font-size: 0.94rem;">
                         <li><strong><code>driver_season_points</code> (Pontos do Ano):</strong> Soma acumulada de pontos do piloto na temporada até a etapa anterior.</li>
                         <li><strong><code>driver_recent_avg_points</code> (Forma Recente - 5 GPs):</strong> Média de pontos obtidos pelo piloto nas últimas 5 rodadas disputadas.</li>
-                        <li><strong><code>driver_track_avg_points</code> (Histórico na Pista Suavizado):</strong> Média histórica no circuito com Suavização de Laplace ($K=3$) para proteger estreantes.</li>
+                        <li><strong><code>driver_track_avg_points</code> (Histórico na Pista Suavizado):</strong> Média histórica no circuito com Suavização de Laplace para proteger estreantes.</li>
                         <li><strong><code>constructor_avg_position</code> (Posição Média da Equipe):</strong> Média de chegada dos carros da equipe (escala contínua de 1.0 a 22.0 sem a zona cega de 0 pontos).</li>
                         <li><strong><code>grid</code> (Proxy Média 2026 & Imputação 15.0):</strong> Posição média de largada em 2026 para a prova alvo, isolando punições temporárias de motor.</li>
                     </ul>
@@ -567,7 +566,7 @@
                     <h4 style="color: var(--accent-cyan); text-transform: uppercase; font-size: 0.92rem; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
                         Resumo dos Atributos de Entrada no Pipeline
                     </h4>
-                    <table class="custom-table" style="font-size: 0.82rem;">
+                    <table class="custom-table" style="font-size: 0.95rem;">
                         <thead>
                             <tr>
                                 <th>Atributo</th>
@@ -593,12 +592,12 @@
                             </tr>
                             <tr>
                                 <td><code>driver_track_avg_points</code></td>
-                                <td>Média Suavizada ($K=3$)</td>
+                                <td>Média Suavizada</td>
                                 <td>Aptidão ao Hungaroring</td>
                             </tr>
                             <tr>
                                 <td><code>constructor_avg_position</code></td>
-                                <td>Média Equipe (1-22)</td>
+                                <td>Média Equipe</td>
                                 <td>Desempenho do carro</td>
                             </tr>
                         </tbody>
@@ -624,7 +623,7 @@
                 <div class="visual-card" style="justify-content: flex-start; gap: 12px; padding: 18px;">
                     <h4 style="color: var(--accent-cyan); text-transform: uppercase; font-size: 0.92rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
                         <span>1. Coeficientes do Modelo Ridge</span>
-                        <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: none;">Pesos Padronizados</span>
+                        <span style="font-size: 0.95rem; color: var(--text-muted); text-transform: none;">Pesos Padronizados</span>
                     </h4>
                     
                     <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
@@ -688,7 +687,7 @@
                 <div class="visual-card" style="justify-content: flex-start; gap: 12px; padding: 18px;">
                     <h4 style="color: var(--accent-green); text-transform: uppercase; font-size: 0.92rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
                         <span>2. Importâncias do Random Forest</span>
-                        <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: none;">Gini Importance (%)</span>
+                        <span style="font-size: 0.95rem; color: var(--text-muted); text-transform: none;">Gini Importance (%)</span>
                     </h4>
                     
                     <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem;">
@@ -755,97 +754,99 @@
             </div>
         </div>
 
-        <!-- SLIDE 6: DUAS TABELAS SEPARADAS E SIMPLIFICADAS (RIDGE VS RANDOM FOREST - 22 PILOTOS) -->
+        <!-- SLIDE 6: PREVISÃO DA CORRIDA FINAL COM GRID REAL (RIDGE VS RANDOM FOREST) -->
         <div class="slide" id="slide-6">
             <div class="slide-header">
-                <h2 class="slide-title">Previsão GP Hungria 2026: Todos os 22 Pilotos</h2>
-                <span class="slide-category">Resultados Comparativos</span>
+                <h2 class="slide-title">Previsão da Corrida Final: GP Hungria 2026</h2>
+                <span class="slide-category">Alimentado c/ Grid Real</span>
             </div>
             
             <div class="slide-body" style="grid-template-columns: 1fr 1fr; gap: 20px;">
                 <!-- Tabela 1: Regressão Ridge -->
                 <div class="visual-card" style="padding: 14px; max-height: 480px; overflow-y: auto; justify-content: flex-start;">
                     <h4 style="margin-bottom: 8px; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
-                        <span>1. Regressão Ridge (Modelo Linear)</span>
-                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: none;">Top 22 Pilotos</span>
+                        <span>1. Previsão Regressão Ridge</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: none;">Top 22 Pilotos (Grid Real)</span>
                     </h4>
                     <table class="custom-table" style="font-size: 0.78rem;">
                         <thead>
                             <tr style="position: sticky; top: 0; background: #ffffff; z-index: 5;">
-                                <th style="width: 10%;">Pos</th>
+                                <th style="width: 8%;">Pos</th>
                                 <th>Piloto</th>
                                 <th>Equipe</th>
-                                <th style="text-align: right; color: var(--accent-cyan);">Predição</th>
+                                <th style="text-align: center;">Grid</th>
+                                <th style="text-align: right; color: var(--accent-cyan);">Score Predito</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">3.47</td></tr>
-                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">3.51</td></tr>
-                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">5.90</td></tr>
-                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">6.09</td></tr>
-                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">6.65</td></tr>
-                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">6.84</td></tr>
-                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">7.35</td></tr>
-                            <tr><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">10.54</td></tr>
-                            <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.20</td></tr>
-                            <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.29</td></tr>
-                            <tr><td><span class="rank-badge">11</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.98</td></tr>
-                            <tr><td><span class="rank-badge">12</span></td><td style="font-weight: 600;">Franco Colapinto</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">12.58</td></tr>
-                            <tr><td><span class="rank-badge">13</span></td><td style="font-weight: 600;">Gabriel Bortoleto</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">12.87</td></tr>
-                            <tr><td><span class="rank-badge">14</span></td><td style="font-weight: 600;">Carlos Sainz</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.23</td></tr>
-                            <tr><td><span class="rank-badge">15</span></td><td style="font-weight: 600;">Esteban Ocon</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.26</td></tr>
-                            <tr><td><span class="rank-badge">16</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.55</td></tr>
-                            <tr><td><span class="rank-badge">17</span></td><td style="font-weight: 600;">Oliver Bearman</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.59</td></tr>
-                            <tr><td><span class="rank-badge">18</span></td><td style="font-weight: 600;">Fernando Alonso</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">14.67</td></tr>
-                            <tr><td><span class="rank-badge">19</span></td><td style="font-weight: 600;">Alexander Albon</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">14.84</td></tr>
-                            <tr><td><span class="rank-badge">20</span></td><td style="font-weight: 600;">Valtteri Bottas</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">15.29</td></tr>
-                            <tr><td><span class="rank-badge">21</span></td><td style="font-weight: 600;">Sergio Pérez</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">15.54</td></tr>
-                            <tr><td><span class="rank-badge">22</span></td><td style="font-weight: 600;">Lance Stroll</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">16.74</td></tr>
+                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">5º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">3.63</td></tr>
+                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">3º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">4.95</td></tr>
+                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">7º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">4.97</td></tr>
+                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">1º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">5.83</td></tr>
+                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">4º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">5.93</td></tr>
+                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">2º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">6.03</td></tr>
+                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">6º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">7.09</td></tr>
+                            <tr><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">8º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">10.15</td></tr>
+                            <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">11º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.33</td></tr>
+                            <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">9º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.39</td></tr>
+                            <tr><td><span class="rank-badge">11</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">12º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">11.57</td></tr>
+                            <tr><td><span class="rank-badge">12</span></td><td style="font-weight: 600;">Franco Colapinto</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">13º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">12.52</td></tr>
+                            <tr><td><span class="rank-badge">13</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">10º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.02</td></tr>
+                            <tr><td><span class="rank-badge">14</span></td><td style="font-weight: 600;">Gabriel Bortoleto</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">14º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.11</td></tr>
+                            <tr><td><span class="rank-badge">15</span></td><td style="font-weight: 600;">Esteban Ocon</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">15º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.18</td></tr>
+                            <tr><td><span class="rank-badge">16</span></td><td style="font-weight: 600;">Fernando Alonso</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">16º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.31</td></tr>
+                            <tr><td><span class="rank-badge">17</span></td><td style="font-weight: 600;">Carlos Sainz</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">18º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">13.64</td></tr>
+                            <tr><td><span class="rank-badge">18</span></td><td style="font-weight: 600;">Oliver Bearman</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">17º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">14.34</td></tr>
+                            <tr><td><span class="rank-badge">19</span></td><td style="font-weight: 600;">Alexander Albon</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">19º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">15.44</td></tr>
+                            <tr><td><span class="rank-badge">20</span></td><td style="font-weight: 600;">Valtteri Bottas</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">21º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">15.56</td></tr>
+                            <tr><td><span class="rank-badge">21</span></td><td style="font-weight: 600;">Sergio Pérez</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">22º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">16.13</td></tr>
+                            <tr><td><span class="rank-badge">22</span></td><td style="font-weight: 600;">Lance Stroll</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">20º</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">16.24</td></tr>
 
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Tabela 2: Random Forest Regressor -->
+                <!-- Tabela 2: Random Forest -->
                 <div class="visual-card" style="padding: 14px; max-height: 480px; overflow-y: auto; justify-content: flex-start;">
                     <h4 style="margin-bottom: 8px; color: var(--accent-green); text-transform: uppercase; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
-                        <span>2. Random Forest Regressor (Árvores)</span>
-                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: none;">Top 22 Pilotos</span>
+                        <span>2. Previsão Random Forest</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: none;">Top 22 Pilotos (Grid Real)</span>
                     </h4>
                     <table class="custom-table" style="font-size: 0.78rem;">
                         <thead>
                             <tr style="position: sticky; top: 0; background: #ffffff; z-index: 5;">
-                                <th style="width: 10%;">Pos</th>
+                                <th style="width: 8%;">Pos</th>
                                 <th>Piloto</th>
                                 <th>Equipe</th>
-                                <th style="text-align: right; color: var(--accent-green);">Predição</th>
+                                <th style="text-align: center;">Grid</th>
+                                <th style="text-align: right; color: var(--accent-green);">Score Predito</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">3.79</td></tr>
-                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">4.46</td></tr>
-                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">5.63</td></tr>
-                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">6.10</td></tr>
-                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">6.40</td></tr>
-                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">6.69</td></tr>
-                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">7.86</td></tr>
-                            <tr><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">9.57</td></tr>
-                            <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">10.42</td></tr>
-                            <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">10.48</td></tr>
-                            <tr><td><span class="rank-badge">11</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">11.68</td></tr>
-                            <tr><td><span class="rank-badge">12</span></td><td style="font-weight: 600;">Franco Colapinto</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.70</td></tr>
-                            <tr><td><span class="rank-badge">13</span></td><td style="font-weight: 600;">Gabriel Bortoleto</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.74</td></tr>
-                            <tr><td><span class="rank-badge">14</span></td><td style="font-weight: 600;">Oliver Bearman</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.85</td></tr>
-                            <tr><td><span class="rank-badge">15</span></td><td style="font-weight: 600;">Esteban Ocon</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.90</td></tr>
-                            <tr><td><span class="rank-badge">16</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">13.57</td></tr>
-                            <tr><td><span class="rank-badge">17</span></td><td style="font-weight: 600;">Fernando Alonso</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">14.35</td></tr>
-                            <tr><td><span class="rank-badge">18</span></td><td style="font-weight: 600;">Carlos Sainz</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">15.33</td></tr>
-                            <tr><td><span class="rank-badge">19</span></td><td style="font-weight: 600;">Alexander Albon</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">15.57</td></tr>
-                            <tr><td><span class="rank-badge">20</span></td><td style="font-weight: 600;">Valtteri Bottas</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">15.83</td></tr>
-                            <tr><td><span class="rank-badge">21</span></td><td style="font-weight: 600;">Lance Stroll</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">16.00</td></tr>
-                            <tr><td><span class="rank-badge">22</span></td><td style="font-weight: 600;">Sergio Pérez</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">16.19</td></tr>
+                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">3º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">4.10</td></tr>
+                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">4º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">4.70</td></tr>
+                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">1º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">4.80</td></tr>
+                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">5º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">4.89</td></tr>
+                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">2º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">5.00</td></tr>
+                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">7º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">5.99</td></tr>
+                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">6º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">6.03</td></tr>
+                            <tr><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">8º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">9.25</td></tr>
+                            <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">11º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">10.40</td></tr>
+                            <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">12º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">11.20</td></tr>
+                            <tr><td><span class="rank-badge">11</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">9º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">11.21</td></tr>
+                            <tr><td><span class="rank-badge">12</span></td><td style="font-weight: 600;">Franco Colapinto</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">13º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.73</td></tr>
+                            <tr><td><span class="rank-badge">13</span></td><td style="font-weight: 600;">Esteban Ocon</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">15º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">12.78</td></tr>
+                            <tr><td><span class="rank-badge">14</span></td><td style="font-weight: 600;">Fernando Alonso</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">16º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">13.21</td></tr>
+                            <tr><td><span class="rank-badge">15</span></td><td style="font-weight: 600;">Gabriel Bortoleto</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">14º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">13.46</td></tr>
+                            <tr><td><span class="rank-badge">16</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">10º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">13.51</td></tr>
+                            <tr><td><span class="rank-badge">17</span></td><td style="font-weight: 600;">Oliver Bearman</td><td style="color: var(--text-muted);">Haas F1 Team</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">17º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">13.94</td></tr>
+                            <tr><td><span class="rank-badge">18</span></td><td style="font-weight: 600;">Carlos Sainz</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">18º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">14.77</td></tr>
+                            <tr><td><span class="rank-badge">19</span></td><td style="font-weight: 600;">Alexander Albon</td><td style="color: var(--text-muted);">Williams</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">19º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">15.33</td></tr>
+                            <tr><td><span class="rank-badge">20</span></td><td style="font-weight: 600;">Valtteri Bottas</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">21º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">15.89</td></tr>
+                            <tr><td><span class="rank-badge">21</span></td><td style="font-weight: 600;">Lance Stroll</td><td style="color: var(--text-muted);">Aston Martin</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">20º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">16.42</td></tr>
+                            <tr><td><span class="rank-badge">22</span></td><td style="font-weight: 600;">Sergio Pérez</td><td style="color: var(--text-muted);">Cadillac</td><td style="text-align: center; font-size: 0.75rem; color: var(--text-muted);">22º</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">16.93</td></tr>
 
                         </tbody>
                     </table>
@@ -868,19 +869,19 @@
             <!-- Métricas de Desempenho do Modelo -->
             <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px;">
                 <div class="stat-box" style="padding: 10px; border-color: rgba(0, 240, 255, 0.3);">
-                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-cyan);">1.82</div>
+                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-cyan);">2.18</div>
                     <div class="stat-label" style="font-size: 0.7rem;">Erro Médio (MAE)</div>
                 </div>
                 <div class="stat-box" style="padding: 10px; border-color: rgba(57, 255, 20, 0.3);">
-                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-green);">4 / 22</div>
-                    <div class="stat-label" style="font-size: 0.7rem;">Cravadas Exatas (18.2%)</div>
+                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-green);">2 / 22</div>
+                    <div class="stat-label" style="font-size: 0.7rem;">Cravadas Exatas (9.1%)</div>
                 </div>
                 <div class="stat-box" style="padding: 10px; border-color: rgba(255, 215, 0, 0.3);">
-                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-gold);">50.0%</div>
+                    <div class="stat-number" style="font-size: 1.5rem; color: var(--accent-gold);">40.9%</div>
                     <div class="stat-label" style="font-size: 0.7rem;">Margem de ±1 Posição</div>
                 </div>
                 <div class="stat-box" style="padding: 10px;">
-                    <div class="stat-number" style="font-size: 1.5rem; color: var(--text-light);">68.2%</div>
+                    <div class="stat-number" style="font-size: 1.5rem; color: var(--text-light);">63.6%</div>
                     <div class="stat-label" style="font-size: 0.7rem;">Margem de ±2 Posições</div>
                 </div>
             </div>
@@ -903,12 +904,12 @@
                         <tbody>
 
                             <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td></tr>
-                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td></tr>
-                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td></tr>
-                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td></tr>
-                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td></tr>
-                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td></tr>
-                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td></tr>
+                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td></tr>
+                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td></tr>
+                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td></tr>
+                            <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td></tr>
+                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td></tr>
+                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td></tr>
                             <tr><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td></tr>
                             <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Arvid Lindblad</td><td style="color: var(--text-muted);">RB F1 Team</td></tr>
                             <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Nico Hülkenberg</td><td style="color: var(--text-muted);">Audi</td></tr>
@@ -946,13 +947,13 @@
                         </thead>
                         <tbody>
 
-                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-gold); font-weight: bold;">Real: 4º (Diff -3)</td></tr>
-                            <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 2º!</td></tr>
-                            <tr><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 5º (Diff -2)</td></tr>
-                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 3º (Diff +1)</td></tr>
+                            <tr><td><span class="rank-badge rank-1">1</span></td><td style="font-weight: 600;">A. Kimi Antonelli</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-gold); font-weight: bold;">Real: 7º (Diff -6)</td></tr>
+                            <tr><td><span class="rank-badge rank-2">2</span></td><td style="font-weight: 600;">Lewis Hamilton</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 5º (Diff -3)</td></tr>
+                            <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge rank-3">3</span></td><td style="font-weight: 600;">Oscar Piastri</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 3º!</td></tr>
+                            <tr><td><span class="rank-badge">4</span></td><td style="font-weight: 600;">Charles Leclerc</td><td style="color: var(--text-muted);">Ferrari</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 2º (Diff +2)</td></tr>
                             <tr><td><span class="rank-badge">5</span></td><td style="font-weight: 600;">Lando Norris</td><td style="color: var(--text-muted);">McLaren</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 1º (Diff +4)</td></tr>
-                            <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 6º!</td></tr>
-                            <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 7º!</td></tr>
+                            <tr><td><span class="rank-badge">6</span></td><td style="font-weight: 600;">Max Verstappen</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 4º (Diff +2)</td></tr>
+                            <tr><td><span class="rank-badge">7</span></td><td style="font-weight: 600;">George Russell</td><td style="color: var(--text-muted);">Mercedes</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 6º (Diff +1)</td></tr>
                             <tr style="background: rgba(22, 163, 74, 0.12);"><td><span class="rank-badge">8</span></td><td style="font-weight: 600;">Isack Hadjar</td><td style="color: var(--text-muted);">Red Bull</td><td style="text-align: right; color: var(--accent-green); font-weight: bold;">🎯 CRAVOU 8º!</td></tr>
                             <tr><td><span class="rank-badge">9</span></td><td style="font-weight: 600;">Pierre Gasly</td><td style="color: var(--text-muted);">Alpine F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 12º (Diff -3)</td></tr>
                             <tr><td><span class="rank-badge">10</span></td><td style="font-weight: 600;">Liam Lawson</td><td style="color: var(--text-muted);">RB F1 Team</td><td style="text-align: right; color: var(--accent-cyan); font-weight: bold;">Real: 11º (Diff -1)</td></tr>
